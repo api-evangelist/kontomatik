@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/kontomatik/main/json-schema/kontomatik-transaction-schema.json",
+  "title": "KontomatikTransaction",
+  "description": "A normalized bank transaction extracted by Kontomatik AIS or PDF parsing.",
+  "type": "object",
+  "required": ["date", "amount", "currency"],
+  "properties": {
+    "externalId": {"type": "string"},
+    "date": {"type": "string", "format": "date"},
+    "amount": {"type": "number"},
+    "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+    "description": {"type": "string"},
+    "counterpartyName": {"type": "string"},
+    "counterpartyAccount": {"type": "string"},
+    "label": {
+      "type": "string",
+      "description": "Category label assigned by Kontomatik labeling (salary, rent, utilities, etc.)"
+    },
+    "vendor": {"type": "string", "description": "Recognized vendor name (beta)."},
+    "source": {"type": "string", "enum": ["AIS", "PDF", "UPLOAD"]}
+  }
+}

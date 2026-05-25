@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/kontomatik/main/json-schema/kontomatik-owner-schema.json",
+  "title": "KontomatikOwner",
+  "description": "An account owner identified through Kontomatik AIS, PDF parsing, or owner upload.",
+  "type": "object",
+  "required": ["externalId"],
+  "properties": {
+    "externalId": {"type": "string", "description": "Client-supplied stable identifier used for aggregation."},
+    "name": {"type": "string"},
+    "nationalId": {"type": "string"},
+    "email": {"type": "string", "format": "email"},
+    "address": {"type": "string"},
+    "country": {"type": "string", "enum": ["PL", "CZ", "ES", "PT", "RO", "LT", "LV", "EE"]},
+    "accounts": {
+      "type": "array",
+      "items": {"$ref": "https://raw.githubusercontent.com/api-evangelist/kontomatik/main/json-schema/kontomatik-account-schema.json"}
+    }
+  }
+}

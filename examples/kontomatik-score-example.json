@@ -1,0 +1,11 @@
+{
+  "ownerExternalId": "owner-42",
+  "score": 712,
+  "scoreVersion": "kontomatik-score-v3",
+  "repaymentProbability": 0.91,
+  "explanations": [
+    "Regular monthly salary inflow detected for 12 consecutive months",
+    "Stable rent payments suggest predictable housing expense",
+    "No detected gambling or high-risk merchant patterns"
+  ]
+}

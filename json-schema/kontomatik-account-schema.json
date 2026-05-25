@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/kontomatik/main/json-schema/kontomatik-account-schema.json",
+  "title": "KontomatikAccount",
+  "description": "A bank account imported via Kontomatik AIS or PDF parsing.",
+  "type": "object",
+  "required": ["number", "currency"],
+  "properties": {
+    "number": {"type": "string", "description": "IBAN or local account number."},
+    "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+    "balance": {"type": "number"},
+    "availableBalance": {"type": "number"},
+    "bank": {"type": "string"},
+    "country": {"type": "string", "enum": ["PL", "CZ", "ES", "PT", "RO", "LT", "LV", "EE"]},
+    "accessMode": {"type": "string", "enum": ["SINGLE", "MULTIPLE", "MIXED"]},
+    "transactions": {
+      "type": "array",
+      "items": {"$ref": "https://raw.githubusercontent.com/api-evangelist/kontomatik/main/json-schema/kontomatik-transaction-schema.json"}
+    }
+  }
+}

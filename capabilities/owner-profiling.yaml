@@ -1,0 +1,23 @@
+id: kontomatik-owner-profiling
+name: Kontomatik Owner Profiling
+description: |
+  Generate descriptive behavioral profiles and customer segments from imported
+  transaction data (beta).
+provider: kontomatik
+api: kontomatik-data-analysis-api
+operations:
+- operationId: getProfile
+- operationId: getOwnerFeatures
+- operationId: getDataSummary
+- operationId: getVendors
+inputs:
+- name: ownerExternalId
+outputs:
+- name: segments
+- name: features
+- name: summary
+- name: vendors
+tags:
+- BehavioralProfiling
+- Segmentation
+- Beta

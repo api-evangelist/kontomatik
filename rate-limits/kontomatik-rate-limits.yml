@@ -1,0 +1,25 @@
+aid: kontomatik
+specification: API Commons Rate Limits 0.1
+url: https://developer.kontomatik.com/
+description: |
+  Kontomatik does not publish numeric per-key request rates. Limits and quotas
+  are agreed contractually and enforced via IP whitelisting, X-Api-Key issuance,
+  and the Insight portal's usage statistics.
+limits:
+- name: Server Allowlist
+  scope: organization
+  description: Requests must originate from a server whose IP address has been whitelisted by Kontomatik.
+- name: API Key
+  scope: api-key
+  description: Each request must include a valid X-Api-Key header. Keys are issued and rotated through the Insight portal.
+- name: AIS Multiple Access Window
+  scope: consent
+  duration: 180d
+  description: Multiple Access consent tokens permit continuous AIS data fetches for up to 180 days before reauthentication.
+- name: Contractual Volume
+  scope: contract
+  description: Per-import volumes and concurrency are agreed in the master contract; overage handling is negotiated per customer.
+- name: Default Data Retention
+  scope: owner
+  duration: 24h
+  description: Imported owner data is retained for 24 hours by default unless extended retention is configured.

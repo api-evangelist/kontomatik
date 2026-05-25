@@ -1,0 +1,39 @@
+aid: kontomatik
+specification: API Commons Plans 0.1
+url: https://kontomatik.com/contact
+description: |
+  Kontomatik publishes no public list pricing. All plans are agreed via a sales
+  conversation, demo, and contract, then provisioned through the Insight portal.
+plans:
+- id: demo
+  name: Demo
+  description: Demonstration of Kontomatik AIS, PDF parsing, and analytical services scoped during a sales call.
+  pricing:
+  - geo: Global
+    price: Contact
+    metric: contact
+    timeFrame: usage
+    description: Free demo provisioned by the Kontomatik sales team.
+  elements:
+  - name: KontoBank mock-bank sandbox session
+  - name: Walkthrough of AIS, PDF, and Data Analysis endpoints
+  - name: Scoped trial against test environment
+- id: production
+  name: Production Contract
+  description: Custom B2B contract for live AIS, PDF parsing, and analytical services across supported CEE markets.
+  pricing:
+  - geo: EU
+    price: Contact
+    metric: import
+    timeFrame: usage
+    description: Per-import or volume-based pricing negotiated in the master agreement.
+  elements:
+  - name: Account Information Service (AIS) — Single, Multiple, and Mixed access modes
+  - name: PDF Statements & Confirmations parsing (Poland)
+  - name: Data Analysis — Labeling, Vendor Recognition, Scoring, Profiling, Owner Features, Data Summary, Income Confirmation
+  - name: Kontomatik Report (beta)
+  - name: Insight client portal with role-based access
+  - name: IP whitelisting and X-Api-Key issuance
+contact:
+- email: sales@kontomatik.com
+- url: https://calendly.com/dominik-wolski-kontomatik/demo-call

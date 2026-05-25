@@ -1,0 +1,27 @@
+{
+  "id": "cmd-7f8a1d",
+  "status": "COMPLETED",
+  "target": "PL_PKO",
+  "owners": [
+    {
+      "externalId": "owner-42",
+      "name": "Jan Kowalski",
+      "nationalId": "PL-85010112345",
+      "email": "jan.kowalski@example.com"
+    }
+  ],
+  "accounts": [
+    {
+      "number": "PL61109010140000071219812874",
+      "currency": "PLN",
+      "balance": 4218.55,
+      "availableBalance": 4218.55,
+      "transactions": [
+        {"date": "2026-05-02", "amount": 7200.00, "currency": "PLN", "description": "Wynagrodzenie", "label": "salary"},
+        {"date": "2026-05-05", "amount": -1850.00, "currency": "PLN", "description": "Czynsz", "label": "rent"},
+        {"date": "2026-05-09", "amount": -289.43, "currency": "PLN", "description": "Biedronka 1421", "label": "groceries"}
+      ]
+    }
+  ],
+  "multipleAccessToken": "mat_01HZ8VK7C9X..."
+}

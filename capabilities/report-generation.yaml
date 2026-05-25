@@ -1,0 +1,21 @@
+id: kontomatik-report-generation
+name: Kontomatik Report Generation
+description: |
+  Create, list, and retrieve shareable Kontomatik Report tokens that summarize
+  imported and analyzed owner data (beta).
+provider: kontomatik
+api: kontomatik-report-api
+operations:
+- operationId: createReportToken
+- operationId: listReportTokens
+- operationId: getReportByToken
+inputs:
+- name: ownerExternalId
+- name: reportType
+outputs:
+- name: token
+- name: sections
+- name: summary
+tags:
+- Reporting
+- Beta

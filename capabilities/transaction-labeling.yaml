@@ -1,0 +1,23 @@
+id: kontomatik-transaction-labeling
+name: Kontomatik Transaction Labeling
+description: |
+  Categorize and tag bank transactions (salary, rent, utilities, etc.) using
+  Kontomatik's ML labeling. Supports both imported AIS/PDF transactions and
+  external transactions submitted by clients.
+provider: kontomatik
+api: kontomatik-data-analysis-api
+operations:
+- operationId: getLabeling
+- operationId: labelExternalData
+inputs:
+- name: ownerExternalId
+- name: transactions
+  description: For external labeling, the array of transactions to categorize.
+outputs:
+- name: labels
+- name: category
+- name: confidence
+tags:
+- TransactionLabeling
+- Categorization
+- MachineLearning

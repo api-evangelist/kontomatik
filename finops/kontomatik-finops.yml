@@ -1,0 +1,37 @@
+aid: kontomatik
+specification: FinOps Foundation / FOCUS-aligned 0.1
+url: https://kontomatik.com/contact
+description: |
+  Kontomatik's billing surface is contract-driven; there is no self-service
+  metering dashboard. Cost attribution and reporting happen through the Insight
+  portal and the sales/account-management relationship.
+billing:
+  model: B2B contract
+  currency: EUR/PLN
+  invoicing: Monthly invoicing per contract terms
+  meter:
+  - name: AIS Imports
+    description: Number of successful AIS import commands per access mode.
+  - name: PDF Statements Parsed
+    description: Count of statement and confirmation PDFs parsed.
+  - name: Data Analysis Calls
+    description: Calls to labeling, scoring, profiling, summary, and income confirmation endpoints.
+  - name: Multiple Access Consents
+    description: Active Multiple Access consent tokens held by the organization.
+allocation:
+- dimension: ownerExternalId
+  description: Per-end-user attribution using the ownerExternalId aggregation key.
+- dimension: target
+  description: Per-bank target attribution from the AIS catalog.
+- dimension: country
+  description: Per-country attribution (PL, CZ, ES, PT, RO, LT, LV, EE).
+reporting:
+- name: Insight Usage Statistics
+  url: https://insight.kontomatik.com/
+  description: Action logs and usage statistics surfaced in the Insight client portal.
+- name: Account Manager Reports
+  description: Periodic invoice and consumption reports delivered by the Kontomatik account manager.
+controls:
+- IP whitelisting per environment
+- API key rotation via Insight
+- Role-based portal access with 2FA

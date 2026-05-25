@@ -1,0 +1,40 @@
+extends: [[spectral:oas, recommended]]
+rules:
+  kontomatik-base-url-versioned:
+    description: Kontomatik servers should be versioned under /v1.
+    given: $.servers[*].url
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "/v1/?$"
+  kontomatik-requires-api-key:
+    description: All operations must require the X-Api-Key security scheme (except /health).
+    given: $.paths[?(@property != '/health')].*.security
+    severity: error
+    then:
+      function: truthy
+  kontomatik-owner-external-id-required:
+    description: Operations that operate on owner-scoped data should accept an ownerExternalId parameter.
+    given: $.paths[*][get,post]
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: ownerExternalId
+  kontomatik-title-case-summaries:
+    description: Operation summaries should use Title Case.
+    given: $.paths[*][*].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+  kontomatik-operation-id-camel-case:
+    description: operationId should be lowerCamelCase.
+    given: $.paths[*][*].operationId
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"

@@ -1,0 +1,23 @@
+{
+  "title": "KontomatikOwnerGraph",
+  "description": "Top-level structural layout of a Kontomatik owner graph as returned by AIS, PDF parsing, and aggregated data endpoints.",
+  "structure": {
+    "Owner": {
+      "fields": ["externalId", "name", "nationalId", "email", "address", "country"],
+      "relations": {
+        "accounts": "Account[]"
+      }
+    },
+    "Account": {
+      "fields": ["number", "currency", "balance", "availableBalance", "bank", "country", "accessMode"],
+      "relations": {
+        "transactions": "Transaction[]"
+      }
+    },
+    "Transaction": {
+      "fields": ["externalId", "date", "amount", "currency", "description", "counterpartyName", "counterpartyAccount", "label", "vendor", "source"]
+    }
+  },
+  "sources": ["AIS", "PDF", "UPLOAD"],
+  "aggregationKey": "Owner.externalId"
+}

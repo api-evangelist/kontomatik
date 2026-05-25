@@ -1,0 +1,19 @@
+id: kontomatik-income-confirmation
+name: Kontomatik Income Confirmation
+description: |
+  Validate and aggregate confirmed income across four configurable timespans
+  using Kontomatik's labeling and analytical stack.
+provider: kontomatik
+api: kontomatik-data-analysis-api
+operations:
+- operationId: getIncomeConfirmation
+inputs:
+- name: ownerExternalId
+outputs:
+- name: timespans
+- name: confirmedIncome
+- name: transactionCount
+tags:
+- IncomeVerification
+- Underwriting
+- KYC

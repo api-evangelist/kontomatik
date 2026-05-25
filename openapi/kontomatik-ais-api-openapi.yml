@@ -1,0 +1,299 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service API
+  version: 1.0.0
+  description: |
+    PSD2-regulated Account Information Service (AIS) for connecting to end-user
+    bank accounts across Central and Eastern Europe. Supports Single Access
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: SignIn
+  description: Redirection-based bank authentication flow
+- name: Command
+  description: Background import commands and consent management
+- name: Catalog
+  description: Bank coverage catalog
+- name: Mock
+  description: Test session generation against KontoBank
+paths:
+  /signin/redirection:
+    post:
+      tags: [SignIn]
+      summary: Initiate Redirection SignIn Flow
+      description: Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page.
+      operationId: initiateRedirectionSignIn
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedirectionSignInRequest'
+      responses:
+        '200':
+          description: Redirection URL issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionSignInResponse'
+  /signin/redirection-status:
+    get:
+      tags: [SignIn]
+      summary: Check Redirection SignIn Status
+      description: Returns the completion status of an active redirection sign-in.
+      operationId: getRedirectionSignInStatus
+      parameters:
+      - name: sessionId
+        in: query
+        required: true
+        schema: {type: string}
+      responses:
+        '200':
+          description: Status returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionSignInStatus'
+  /command/default-import.xml:
+    post:
+      tags: [Command]
+      summary: Start Default Data Import
+      description: Initiates background import of transactions, accounts, and owner data from the authenticated session.
+      operationId: startDefaultImport
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DefaultImportRequest'
+      responses:
+        '200':
+          description: Command accepted
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommandAccepted'
+  /command/{id}.xml:
+    get:
+      tags: [Command]
+      summary: Get Command Status
+      description: Polls the status of a previously issued import command and returns results when complete.
+      operationId: getCommandById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: {type: string}
+      responses:
+        '200':
+          description: Command details
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /command/reuse-multiple-access.xml:
+    post:
+      tags: [Command]
+      summary: Reuse Multiple Access Token
+      description: Creates a new import session using an existing Multiple Access consent token (no end-user reauthentication).
+      operationId: reuseMultipleAccess
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReuseMultipleAccessRequest'
+      responses:
+        '200':
+          description: Reuse accepted
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommandAccepted'
+  /command/delete-multiple-access.xml:
+    post:
+      tags: [Command]
+      summary: Delete Multiple Access Consent
+      description: Revokes a Multiple Access consent token, ending continuous access.
+      operationId: deleteMultipleAccess
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteMultipleAccessRequest'
+      responses:
+        '200':
+          description: Consent revoked
+  /mock-session.xml:
+    post:
+      tags: [Mock]
+      summary: Create Mock Session
+      description: Generates a test session against the KontoBank mock bank for sandbox testing.
+      operationId: createMockSession
+      responses:
+        '200':
+          description: Mock session created
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MockSession'
+  /ais-catalog:
+    get:
+      tags: [Catalog]
+      summary: List AIS Catalog
+      description: Returns the catalog of supported banks for the Account Information Service.
+      operationId: getAisCatalog
+      responses:
+        '200':
+          description: Catalog returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AisCatalog'
+  /health:
+    get:
+      tags: [Catalog]
+      summary: Health Check
+      operationId: getHealth
+      security: []
+      responses:
+        '200':
+          description: Service is healthy
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.
+  schemas:
+    RedirectionSignInRequest:
+      type: object
+      required: [target, accessMode]
+      properties:
+        target:
+          type: string
+          description: Target bank identifier from the AIS catalog.
+        accessMode:
+          type: string
+          enum: [SINGLE, MULTIPLE, MIXED]
+        ownerExternalId:
+          type: string
+          description: Optional client-side owner identifier for aggregation.
+        redirectUrl:
+          type: string
+          format: uri
+    RedirectionSignInResponse:
+      type: object
+      properties:
+        sessionId: {type: string}
+        sessionIdSignature: {type: string}
+        redirectUrl: {type: string, format: uri}
+    RedirectionSignInStatus:
+      type: object
+      properties:
+        sessionId: {type: string}
+        status:
+          type: string
+          enum: [PENDING, COMPLETED, FAILED, EXPIRED]
+    DefaultImportRequest:
+      type: object
+      required: [sessionId, sessionIdSignature]
+      properties:
+        sessionId: {type: string}
+        sessionIdSignature: {type: string}
+        since: {type: string, format: date}
+        ownerExternalId: {type: string}
+    ReuseMultipleAccessRequest:
+      type: object
+      required: [multipleAccessToken]
+      properties:
+        multipleAccessToken: {type: string}
+        since: {type: string, format: date}
+    DeleteMultipleAccessRequest:
+      type: object
+      required: [multipleAccessToken]
+      properties:
+        multipleAccessToken: {type: string}
+    CommandAccepted:
+      type: object
+      properties:
+        id: {type: string}
+        status:
+          type: string
+          enum: [QUEUED, RUNNING]
+    CommandResult:
+      type: object
+      properties:
+        id: {type: string}
+        status:
+          type: string
+          enum: [QUEUED, RUNNING, COMPLETED, FAILED]
+        target: {type: string}
+        owners:
+          type: array
+          items: {$ref: '#/components/schemas/Owner'}
+        accounts:
+          type: array
+          items: {$ref: '#/components/schemas/Account'}
+        multipleAccessToken: {type: string}
+    Owner:
+      type: object
+      properties:
+        externalId: {type: string}
+        name: {type: string}
+        email: {type: string}
+        nationalId: {type: string}
+    Account:
+      type: object
+      properties:
+        number: {type: string}
+        currency: {type: string}
+        balance: {type: number, format: double}
+        availableBalance: {type: number, format: double}
+        transactions:
+          type: array
+          items: {$ref: '#/components/schemas/Transaction'}
+    Transaction:
+      type: object
+      properties:
+        date: {type: string, format: date}
+        amount: {type: number, format: double}
+        currency: {type: string}
+        description: {type: string}
+        counterpartyName: {type: string}
+        counterpartyAccount: {type: string}
+        label: {type: string}
+    MockSession:
+      type: object
+      properties:
+        sessionId: {type: string}
+        sessionIdSignature: {type: string}
+    AisCatalog:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            type: object
+            properties:
+              id: {type: string}
+              country: {type: string, example: PL}
+              name: {type: string}
+              accessModes:
+                type: array
+                items: {type: string, enum: [SINGLE, MULTIPLE, MIXED]}

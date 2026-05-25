@@ -1,0 +1,18 @@
+{
+  "statementId": "stmt-9a23",
+  "bank": "PL_PKO",
+  "owners": [
+    {"name": "Jan Kowalski", "nationalId": "PL-85010112345", "address": "ul. Marszalkowska 1, 00-001 Warszawa"}
+  ],
+  "accounts": [
+    {
+      "number": "PL61109010140000071219812874",
+      "currency": "PLN",
+      "transactions": [
+        {"date": "2026-04-01", "amount": 7200.00, "currency": "PLN", "description": "Wynagrodzenie - ACME sp. z o.o."},
+        {"date": "2026-04-15", "amount": -3100.00, "currency": "PLN", "description": "Rata kredytu hipotecznego"}
+      ]
+    }
+  ],
+  "failedVerifications": []
+}

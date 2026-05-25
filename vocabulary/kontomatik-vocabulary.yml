@@ -1,0 +1,51 @@
+aid: kontomatik
+name: Kontomatik Vocabulary
+description: Domain vocabulary spanning Kontomatik's PSD2 AIS, PDF parsing, and analytical services.
+terms:
+- term: AIS
+  definition: Account Information Service — PSD2-regulated read-only access to bank account data.
+- term: Single Access
+  definition: One-time AIS data fetch immediately after end-user authentication.
+- term: Multiple Access
+  definition: AIS access pattern using a consent token reusable for up to 180 days without reauthentication.
+- term: Mixed Access
+  definition: Hybrid access combining Single and Multiple Access semantics within a single session.
+- term: SignIn Flow
+  definition: Kontomatik authorization flow delivered as either a hosted Widget or a Redirection URL.
+- term: KontoBank
+  definition: Kontomatik's mock bank for sandbox/test sessions.
+- term: Owner
+  definition: A natural or legal person whose financial data is imported. Identified by ownerExternalId for aggregation.
+- term: Insight
+  definition: Kontomatik's client portal for managing API keys, IP whitelisting, team access, statistics, and uploads.
+- term: Labeling
+  definition: ML-based categorization of bank transactions (salary, rent, utilities, etc.).
+- term: Vendor Recognition
+  definition: Identification of merchant / counterparty names from transaction text (beta).
+- term: Scoring
+  definition: ML credit scoring expressed as a numeric score plus repayment probability.
+- term: Profiling
+  definition: Behavioral segmentation of owners based on transaction patterns (beta).
+- term: Data Summary
+  definition: Aggregated per-category or per-account financial calculations.
+- term: Income Confirmation
+  definition: Income aggregates computed across four configurable timespans.
+- term: PDF Statement
+  definition: Polish bank statement PDF parsed into structured owner / account / transaction data.
+- term: PDF Confirmation
+  definition: Polish single-transaction confirmation PDF parsed into structured data.
+- term: Trusted Mode
+  definition: PDF parsing mode that returns data even when verification checks fail.
+- term: Standard Mode
+  definition: PDF parsing mode that rejects responses when verification checks fail.
+- term: Report Token
+  definition: Authenticated token granting access to a generated Kontomatik Report (beta).
+tags:
+- OpenBanking
+- PSD2
+- AIS
+- BankData
+- KYC
+- CreditScoring
+- TransactionLabeling
+- CEE
