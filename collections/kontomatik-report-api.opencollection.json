@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Report API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Report Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/report/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a report token granting authenticated access to a generated owner report."
+        },
+        {
+          "info": {
+            "name": "List Report Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/report/tokens",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists available report tokens for the calling organization."
+        },
+        {
+          "info": {
+            "name": "Get Report Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/report/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches the report content addressed by a report token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

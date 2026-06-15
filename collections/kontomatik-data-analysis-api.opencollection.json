@@ -1,0 +1,290 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Data Analysis API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labeling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Transaction Labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/labeling",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns transaction labels (salary, rent, utilities, etc.) for an owner's imported data."
+        },
+        {
+          "info": {
+            "name": "Label External Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/external-data-labeling",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Labels transactions submitted from non-bank sources."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vendors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Vendor Recognition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/vendors",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Identifies merchant / counterparty names in transactions (beta)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Score",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Credit Score",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/score",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns ML-based creditworthiness scoring for an owner."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Behavioral Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/profile",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns descriptive behavioral profile segments based on transaction patterns (beta)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Features",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Owner Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/owner-features",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns owner-level financial metrics derived from imported data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Data Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/data-summary",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Aggregated calculations per category or account."
+        },
+        {
+          "info": {
+            "name": "List Data Summary Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/data-summary-catalog"
+          },
+          "docs": "Lists supported summary categories."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Income",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Income Confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/income-confirmation",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns income-focused aggregates across four configurable timespans."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Aggregation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Aggregated Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/data/aggregated",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Aggregates data across multiple import sessions for a single owner."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Owner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Owner Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/data/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently removes all data for the specified owner. Default retention is 24 hours."
+        },
+        {
+          "info": {
+            "name": "Upload Owner Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/owner-upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads custom owner / account / transaction data in XML or JSON for analysis alongside bank-sourced data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

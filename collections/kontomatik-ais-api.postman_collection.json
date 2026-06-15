@@ -1,0 +1,947 @@
+{
+  "item": [
+    {
+      "id": "5ac8594c-3225-470f-98e6-adc8c6f07d37",
+      "name": "SignIn",
+      "description": {
+        "content": "Redirection-based bank authentication flow",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c42ea1b6-1da5-4a1c-a346-9d843be89da0",
+          "name": "Initiate Redirection SignIn Flow",
+          "request": {
+            "name": "Initiate Redirection SignIn Flow",
+            "description": {
+              "content": "Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "signin",
+                "redirection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target\": \"<string>\",\n  \"accessMode\": \"<string>\",\n  \"ownerExternalId\": \"<string>\",\n  \"redirectUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1933b9c9-af88-49a0-875f-305bb703b8ca",
+              "name": "Redirection URL issued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signin",
+                    "redirection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target\": \"<string>\",\n  \"accessMode\": \"<string>\",\n  \"ownerExternalId\": \"<string>\",\n  \"redirectUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"sessionIdSignature\": \"string\",\n  \"redirectUrl\": \"http://nEZrJDYCeTaJ.hvkV-4jsveIDy+vWrUOCV3nNozFWm8fJwjy0oo.oEAlAx4pZOrb9N.BBT2IBL9lWxFt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15d51b15-4534-4640-8870-e79386f5daf5",
+          "name": "Check Redirection SignIn Status",
+          "request": {
+            "name": "Check Redirection SignIn Status",
+            "description": {
+              "content": "Returns the completion status of an active redirection sign-in.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "signin",
+                "redirection-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sessionId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4840a691-e435-4d42-b36c-2ede0fc344a3",
+              "name": "Status returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signin",
+                    "redirection-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"status\": \"PENDING\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5af07664-90c3-409b-9ec8-a90a486b712c",
+      "name": "Command",
+      "description": {
+        "content": "Background import commands and consent management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b9066ad-81ac-4574-bcf3-a0fdc8ea031c",
+          "name": "Start Default Data Import",
+          "request": {
+            "name": "Start Default Data Import",
+            "description": {
+              "content": "Initiates background import of transactions, accounts, and owner data from the authenticated session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "command",
+                "default-import.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "sessionId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "sessionIdSignature",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ab399ec3-3a08-45cd-880b-aa9639b25183",
+              "name": "Command accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "command",
+                    "default-import.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "sessionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "sessionIdSignature",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "since",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <id>(string)</id>\n  <status>(string)</status>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de92cb0d-40de-45e5-81e7-3c9991d6a5b9",
+          "name": "Get Command Status",
+          "request": {
+            "name": "Get Command Status",
+            "description": {
+              "content": "Polls the status of a previously issued import command and returns results when complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "command",
+                "{{id}}.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09faeefe-f37f-4939-b032-d244300885ee",
+              "name": "Command details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "command",
+                    "{{id}}.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <id>(string)</id>\n  <status>(string)</status>\n  <target>(string)</target>\n  <owners>\n    <externalId>(string)</externalId>\n    <name>(string)</name>\n    <email>(string)</email>\n    <nationalId>(string)</nationalId>\n  </owners>\n  <owners>\n    <externalId>(string)</externalId>\n    <name>(string)</name>\n    <email>(string)</email>\n    <nationalId>(string)</nationalId>\n  </owners>\n  <accounts>\n    <number>(string)</number>\n    <currency>(string)</currency>\n    <balance>(number)</balance>\n    <availableBalance>(number)</availableBalance>\n    <transactions>\n      <date>(string)</date>\n      <amount>(number)</amount>\n      <currency>(string)</currency>\n      <description>(string)</description>\n      <counterpartyName>(string)</counterpartyName>\n      <counterpartyAccount>(string)</counterpartyAccount>\n      <label>(string)</label>\n    </transactions>\n    <transactions>\n      <date>(string)</date>\n      <amount>(number)</amount>\n      <currency>(string)</currency>\n      <description>(string)</description>\n      <counterpartyName>(string)</counterpartyName>\n      <counterpartyAccount>(string)</counterpartyAccount>\n      <label>(string)</label>\n    </transactions>\n  </accounts>\n  <accounts>\n    <number>(string)</number>\n    <currency>(string)</currency>\n    <balance>(number)</balance>\n    <availableBalance>(number)</availableBalance>\n    <transactions>\n      <date>(string)</date>\n      <amount>(number)</amount>\n      <currency>(string)</currency>\n      <description>(string)</description>\n      <counterpartyName>(string)</counterpartyName>\n      <counterpartyAccount>(string)</counterpartyAccount>\n      <label>(string)</label>\n    </transactions>\n    <transactions>\n      <date>(string)</date>\n      <amount>(number)</amount>\n      <currency>(string)</currency>\n      <description>(string)</description>\n      <counterpartyName>(string)</counterpartyName>\n      <counterpartyAccount>(string)</counterpartyAccount>\n      <label>(string)</label>\n    </transactions>\n  </accounts>\n  <multipleAccessToken>(string)</multipleAccessToken>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4956dbf4-2fda-4b5b-bce7-02af5aeb9b01",
+          "name": "Reuse Multiple Access Token",
+          "request": {
+            "name": "Reuse Multiple Access Token",
+            "description": {
+              "content": "Creates a new import session using an existing Multiple Access consent token (no end-user reauthentication).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "command",
+                "reuse-multiple-access.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "multipleAccessToken",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<date>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7db76f72-a55a-422b-a136-30dc57ea3780",
+              "name": "Reuse accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "command",
+                    "reuse-multiple-access.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "multipleAccessToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "since",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <id>(string)</id>\n  <status>(string)</status>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18fd025b-8fa8-4616-a445-e69d8528d575",
+          "name": "Delete Multiple Access Consent",
+          "request": {
+            "name": "Delete Multiple Access Consent",
+            "description": {
+              "content": "Revokes a Multiple Access consent token, ending continuous access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "command",
+                "delete-multiple-access.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "multipleAccessToken",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a71d78a1-f9ff-41ee-919c-bfce9383e357",
+              "name": "Consent revoked",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "command",
+                    "delete-multiple-access.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "multipleAccessToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3b9e0cda-d8e3-4024-8b1e-e2cdabd9d0a1",
+      "name": "Catalog",
+      "description": {
+        "content": "Bank coverage catalog",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1e6e1a4-c93c-45e0-8e4a-9971613a0c86",
+          "name": "List AIS Catalog",
+          "request": {
+            "name": "List AIS Catalog",
+            "description": {
+              "content": "Returns the catalog of supported banks for the Account Information Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ais-catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e367183-6ae3-493b-9554-0e9f25160b4e",
+              "name": "Catalog returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ais-catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"targets\": [\n    {\n      \"id\": \"string\",\n      \"country\": \"PL\",\n      \"name\": \"string\",\n      \"accessModes\": [\n        \"MIXED\",\n        \"MIXED\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"country\": \"PL\",\n      \"name\": \"string\",\n      \"accessModes\": [\n        \"SINGLE\",\n        \"SINGLE\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f4a9844-0a99-4fbf-be5b-cdbe5566c8e1",
+          "name": "Health Check",
+          "request": {
+            "name": "Health Check",
+            "description": {},
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "742a8f96-d574-4ca6-abdb-5ded90148f60",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "37d4acef-363b-4c5e-a9a5-8745d331daaa",
+      "name": "Mock",
+      "description": {
+        "content": "Test session generation against KontoBank",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edeb7bee-dfd8-46ca-81d9-e86a226e669f",
+          "name": "Create Mock Session",
+          "request": {
+            "name": "Create Mock Session",
+            "description": {
+              "content": "Generates a test session against the KontoBank mock bank for sandbox testing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mock-session.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d358c1c-fa77-4c49-95e0-934000f1f388",
+              "name": "Mock session created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mock-session.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <sessionId>(string)</sessionId>\n  <sessionIdSignature>(string)</sessionIdSignature>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "id"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "575f7205-82bc-45e1-b0db-f975f77f600a",
+    "name": "Kontomatik Account Information Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PSD2-regulated Account Information Service (AIS) for connecting to end-user\nbank accounts across Central and Eastern Europe. Supports Single Access\n(one-time data fetch) and Multiple Access (reusable consent token, up to\n180 days), redirection-based SignIn Flow, and mock-bank testing.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}

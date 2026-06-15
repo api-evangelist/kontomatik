@@ -1,0 +1,337 @@
+{
+  "item": [
+    {
+      "id": "68139106-25dd-4959-933b-2f2857aff345",
+      "name": "Reports",
+      "description": {
+        "content": "Report token lifecycle",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31337980-5165-45ab-958b-5f06a6a3904b",
+          "name": "Create Report Token",
+          "request": {
+            "name": "Create Report Token",
+            "description": {
+              "content": "Creates a report token granting authenticated access to a generated owner report.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ownerExternalId\": \"<string>\",\n  \"reportType\": \"STANDARD\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3c4e492-0043-467f-bfd0-adfc246d7897",
+              "name": "Token created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ownerExternalId\": \"<string>\",\n  \"reportType\": \"STANDARD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"ownerExternalId\": \"string\",\n  \"createdAt\": \"2021-09-13T17:43:45.625Z\",\n  \"expiresAt\": \"2017-08-15T02:28:27.741Z\",\n  \"reportType\": \"STANDARD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c1c63b1-ce4b-4f4c-a1fb-c757428efcdf",
+          "name": "List Report Tokens",
+          "request": {
+            "name": "List Report Tokens",
+            "description": {
+              "content": "Lists available report tokens for the calling organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14a04054-0506-4f90-b6fc-a621ceeb0354",
+              "name": "Tokens listed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"token\": \"string\",\n      \"ownerExternalId\": \"string\",\n      \"createdAt\": \"2019-02-26T06:10:29.931Z\",\n      \"expiresAt\": \"1983-02-01T16:54:47.891Z\",\n      \"reportType\": \"EXTENDED\"\n    },\n    {\n      \"token\": \"string\",\n      \"ownerExternalId\": \"string\",\n      \"createdAt\": \"2022-02-28T20:45:03.512Z\",\n      \"expiresAt\": \"1947-10-23T05:11:47.708Z\",\n      \"reportType\": \"STANDARD\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd16b877-e35d-4be1-9e82-7305dbd8cae8",
+          "name": "Get Report Content",
+          "request": {
+            "name": "Get Report Content",
+            "description": {
+              "content": "Fetches the report content addressed by a report token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30658ee4-995a-4195-af91-f915ab7941b1",
+              "name": "Report returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"ownerExternalId\": \"string\",\n  \"generatedAt\": \"1964-04-10T08:20:00.660Z\",\n  \"summary\": {},\n  \"sections\": [\n    {\n      \"name\": \"string\",\n      \"content\": {}\n    },\n    {\n      \"name\": \"string\",\n      \"content\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "db456deb-3ae2-4ed0-a79d-03cf4daef62d",
+    "name": "Kontomatik Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Kontomatik Report (beta) — generate, list, and retrieve shareable\nreport tokens summarizing imported and analyzed owner data.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}

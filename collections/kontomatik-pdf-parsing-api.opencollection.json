@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik PDF Parsing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Parse Statement (Standard)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/pdf/statement",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ownerExternalId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parses a bank statement PDF and returns structured data. Rejects with errors if verification inconsistencies are detected."
+        },
+        {
+          "info": {
+            "name": "Parse Statement (Trusted)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/pdf/statement-trusted",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ownerExternalId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parses a bank statement PDF and returns data even when verification fails. Use when the source is trusted."
+        },
+        {
+          "info": {
+            "name": "List Parsed Statements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/pdf/statements",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists previously parsed statement documents for a given owner."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Confirmations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Parse Confirmation (Standard)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/pdf/confirmation",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ownerExternalId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parses a single-transaction confirmation PDF and returns structured data."
+        },
+        {
+          "info": {
+            "name": "Parse Confirmation (Trusted)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/pdf/confirmation-trusted",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ownerExternalId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parses a confirmation PDF in trusted mode, returning data even on failed verification checks."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List PDF Coverage Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/pdf-catalog"
+          },
+          "docs": "Returns the list of Polish banks supported for PDF statement parsing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

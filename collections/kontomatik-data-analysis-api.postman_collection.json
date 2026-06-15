@@ -1,0 +1,1220 @@
+{
+  "item": [
+    {
+      "id": "f01a2441-9a9e-4e1f-9824-1de064374623",
+      "name": "Labeling",
+      "description": {
+        "content": "Transaction categorization",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef6f3e57-f46a-456c-a3c0-605382e56da6",
+          "name": "Get Transaction Labels",
+          "request": {
+            "name": "Get Transaction Labels",
+            "description": {
+              "content": "Returns transaction labels (salary, rent, utilities, etc.) for an owner's imported data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "labeling"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed386237-3df9-46a5-b3f8-6d70c7516577",
+              "name": "Labels returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labeling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"labels\": [\n    {\n      \"transactionId\": \"string\",\n      \"category\": \"string\",\n      \"confidence\": 7399.9800577286915\n    },\n    {\n      \"transactionId\": \"string\",\n      \"category\": \"string\",\n      \"confidence\": 3492.945106577605\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "041c1662-68d9-47f0-8149-e151d5b91b37",
+          "name": "Label External Transactions",
+          "request": {
+            "name": "Label External Transactions",
+            "description": {
+              "content": "Labels transactions submitted from non-bank sources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external-data-labeling"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactions\": [\n    {\n      \"externalId\": \"<string>\",\n      \"date\": \"<date>\",\n      \"amount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"externalId\": \"<string>\",\n      \"date\": \"<date>\",\n      \"amount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"ownerExternalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74cea315-e44f-4541-bba4-368d0ffaccb9",
+              "name": "External labels returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external-data-labeling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactions\": [\n    {\n      \"externalId\": \"<string>\",\n      \"date\": \"<date>\",\n      \"amount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"externalId\": \"<string>\",\n      \"date\": \"<date>\",\n      \"amount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"ownerExternalId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"labels\": [\n    {\n      \"transactionId\": \"string\",\n      \"category\": \"string\",\n      \"confidence\": 6721.039613577456\n    },\n    {\n      \"transactionId\": \"string\",\n      \"category\": \"string\",\n      \"confidence\": 8485.655019988315\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4006869a-b0ff-46be-a713-903a3acae9d0",
+      "name": "Vendors",
+      "description": {
+        "content": "Vendor / counterparty recognition (beta)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9f2300a-1122-47b3-ae3b-2ea36ca4ee16",
+          "name": "Get Vendor Recognition",
+          "request": {
+            "name": "Get Vendor Recognition",
+            "description": {
+              "content": "Identifies merchant / counterparty names in transactions (beta).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vendors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce8fbb94-a40e-4369-9010-2e6d1fa8e9b0",
+              "name": "Vendor mapping returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vendors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"vendors\": [\n    {\n      \"transactionId\": \"string\",\n      \"vendorName\": \"string\",\n      \"confidence\": 6939.71165877139\n    },\n    {\n      \"transactionId\": \"string\",\n      \"vendorName\": \"string\",\n      \"confidence\": 37.16390176073836\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1d401304-cff8-4d8d-86bc-789decde2ad7",
+      "name": "Score",
+      "description": {
+        "content": "ML credit scoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ff0794a-4908-447b-8659-b1658d9a1e3b",
+          "name": "Get Credit Score",
+          "request": {
+            "name": "Get Credit Score",
+            "description": {
+              "content": "Returns ML-based creditworthiness scoring for an owner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "score"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24af2b16-37d9-4748-b4d5-d997988d3373",
+              "name": "Score returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"score\": 4537.1450182025355,\n  \"scoreVersion\": \"string\",\n  \"repaymentProbability\": 6075.565555574531,\n  \"explanations\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ba875bb1-b334-4c53-8717-0b0c409c0ce8",
+      "name": "Profile",
+      "description": {
+        "content": "Behavioral profiling (beta)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edba5e0d-20c7-4b21-8a0f-581518e80eaa",
+          "name": "Get Behavioral Profile",
+          "request": {
+            "name": "Get Behavioral Profile",
+            "description": {
+              "content": "Returns descriptive behavioral profile segments based on transaction patterns (beta).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4f325b6-54cd-4822-8a02-4aef2eb558b1",
+              "name": "Profile returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"segments\": [\n    \"string\",\n    \"string\"\n  ],\n  \"descriptors\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\",\n    \"key_4\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "63181011-f5f2-4ecc-9676-630ca8efd8e4",
+      "name": "Features",
+      "description": {
+        "content": "Owner-level financial metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60335d4b-bcc4-4e04-864b-a13eba32b398",
+          "name": "Get Owner Features",
+          "request": {
+            "name": "Get Owner Features",
+            "description": {
+              "content": "Returns owner-level financial metrics derived from imported data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owner-features"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d832afe-7df1-43f3-8de9-27635968d041",
+              "name": "Features returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owner-features"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"features\": {\n    \"key_0\": 1443.7875547641831\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "500ea632-9892-408e-80e1-772b43184639",
+      "name": "Summary",
+      "description": {
+        "content": "Aggregated financial summaries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "916d7f62-0d90-463a-8cba-17dfbbdbd516",
+          "name": "Get Data Summary",
+          "request": {
+            "name": "Get Data Summary",
+            "description": {
+              "content": "Aggregated calculations per category or account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de1abd09-264f-435f-a694-097ad79a5a14",
+              "name": "Summary returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"summary\": {\n    \"key_0\": {\n      \"total\": 4875.443272106956,\n      \"count\": 2930,\n      \"average\": 3888.7342088906275\n    },\n    \"key_1\": {\n      \"total\": 5406.675331534925,\n      \"count\": 4436,\n      \"average\": 7071.426051107077\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec6d665c-8f2e-4be7-9f9e-89c2b3d8a0e8",
+          "name": "List Data Summary Catalog",
+          "request": {
+            "name": "List Data Summary Catalog",
+            "description": {
+              "content": "Lists supported summary categories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-summary-catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ee6d508-c621-493f-9de9-87591adcfa52",
+              "name": "Catalog returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-summary-catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4ba51293-88e1-4726-acbe-da1fcae4a3c9",
+      "name": "Income",
+      "description": {
+        "content": "Income confirmation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94c7f722-5fb8-4276-91b6-fa8808b928f2",
+          "name": "Get Income Confirmation",
+          "request": {
+            "name": "Get Income Confirmation",
+            "description": {
+              "content": "Returns income-focused aggregates across four configurable timespans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "income-confirmation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b1cde1e-d329-4e1a-b2eb-9cd586f4b8b8",
+              "name": "Income confirmation returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "income-confirmation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"timespans\": [\n    {\n      \"window\": \"90d\",\n      \"confirmedIncome\": 6456.038166070401,\n      \"transactionCount\": 6322\n    },\n    {\n      \"window\": \"90d\",\n      \"confirmedIncome\": 6956.287663122724,\n      \"transactionCount\": 2079\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7a399d77-982e-42f1-95e7-b41bfc46feaa",
+      "name": "Aggregation",
+      "description": {
+        "content": "Cross-source aggregation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b7d84d7-77a9-4220-9d96-7d3aef010232",
+          "name": "Get Aggregated Data",
+          "request": {
+            "name": "Get Aggregated Data",
+            "description": {
+              "content": "Aggregates data across multiple import sessions for a single owner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "aggregated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90bfa1b7-59cf-495c-ae40-f91c4a70da86",
+              "name": "Aggregated data returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "aggregated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"sources\": [\n    \"AIS\",\n    \"PDF\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "815296c6-c950-4abf-84e5-cfd1c286b845",
+      "name": "Owner",
+      "description": {
+        "content": "Owner data lifecycle",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "163e3338-fc9a-4cc7-a6ec-71e008702304",
+          "name": "Delete Owner Data",
+          "request": {
+            "name": "Delete Owner Data",
+            "description": {
+              "content": "Permanently removes all data for the specified owner. Default retention is 24 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ownerExternalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d79c8517-3efa-465a-bf9e-4cbbdcd047e0",
+              "name": "Data deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ownerExternalId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f6f4ce2-71d2-4bd6-9579-e5b409ba9c04",
+          "name": "Upload Owner Data",
+          "request": {
+            "name": "Upload Owner Data",
+            "description": {
+              "content": "Uploads custom owner / account / transaction data in XML or JSON for analysis alongside bank-sourced data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owner-upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ownerExternalId\": \"<string>\",\n  \"owners\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"accounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"transactions\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82bc09fa-9080-44ed-b4f3-efe189acd55c",
+              "name": "Upload accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owner-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ownerExternalId\": \"<string>\",\n  \"owners\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"accounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"transactions\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc1ee24b-f809-4f03-8f6c-5312a84c5ed8",
+    "name": "Kontomatik Data Analysis API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Analytical services running on top of imported AIS, PDF, or uploaded data.\nIncludes transaction labeling, vendor recognition, ML-based credit scoring,\nbehavioral profiling, owner features, data summaries, and income\nconfirmation across configurable timespans.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}

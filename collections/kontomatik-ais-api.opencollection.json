@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SignIn",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Redirection SignIn Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/signin/redirection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page."
+        },
+        {
+          "info": {
+            "name": "Check Redirection SignIn Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/signin/redirection-status",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the completion status of an active redirection sign-in."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Command",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Default Data Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/command/default-import.xml",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Initiates background import of transactions, accounts, and owner data from the authenticated session."
+        },
+        {
+          "info": {
+            "name": "Get Command Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/command/:id.xml",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Polls the status of a previously issued import command and returns results when complete."
+        },
+        {
+          "info": {
+            "name": "Reuse Multiple Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/command/reuse-multiple-access.xml",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new import session using an existing Multiple Access consent token (no end-user reauthentication)."
+        },
+        {
+          "info": {
+            "name": "Delete Multiple Access Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/command/delete-multiple-access.xml",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Revokes a Multiple Access consent token, ending continuous access."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Mock Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/mock-session.xml"
+          },
+          "docs": "Generates a test session against the KontoBank mock bank for sandbox testing."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List AIS Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/ais-catalog"
+          },
+          "docs": "Returns the catalog of supported banks for the Account Information Service."
+        },
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/health"
+          },
+          "docs": "Health Check"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
