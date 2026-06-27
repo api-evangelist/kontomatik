@@ -43,7 +43,7 @@ apis:
       - url: openapi/kontomatik-pdf-parsing-api-openapi.yml
         type: OpenAPI
       - url: examples/kontomatik-pdf-statement-example.json
-        type: Example
+        type: Examples
     description: >-
       Extract structured owner, account, and transaction data from Polish bank statement and transaction confirmation
       PDFs. Offers standard mode (rejects on verification failures) and trusted mode (returns data even when
@@ -63,7 +63,7 @@ apis:
       - url: openapi/kontomatik-data-analysis-api-openapi.yml
         type: OpenAPI
       - url: examples/kontomatik-score-example.json
-        type: Example
+        type: Examples
       - url: json-structure/kontomatik-owner-graph-structure.json
         type: JSONStructure
     description: >-
@@ -129,13 +129,13 @@ common:
     type: Support
   - url: https://insight.kontomatik.com/
     name: Insight Client Portal
-    type: SignUp
+    type: Signup
   - url: https://kontomatik.com/contact
     name: Contact
     type: Support
   - url: https://calendly.com/dominik-wolski-kontomatik/demo-call
     name: Book a Demo
-    type: SignUp
+    type: Signup
   - url: https://www.linkedin.com/company/kontomatik
     type: LinkedIn
   - url: https://github.com/kontomatik
