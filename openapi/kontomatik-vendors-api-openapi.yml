@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation Vendors API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Vendors
+  description: Vendor / counterparty recognition (beta)
+paths:
+  /vendors:
+    get:
+      tags:
+      - Vendors
+      summary: Get Vendor Recognition
+      description: Identifies merchant / counterparty names in transactions (beta).
+      operationId: getVendors
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Vendor mapping returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VendorResult'
+components:
+  schemas:
+    VendorResult:
+      type: object
+      properties:
+        ownerExternalId:
+          type: string
+        vendors:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionId:
+                type: string
+              vendorName:
+                type: string
+              confidence:
+                type: number
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

@@ -1,0 +1,121 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation SignIn API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: SignIn
+  description: Redirection-based bank authentication flow
+paths:
+  /signin/redirection:
+    post:
+      tags:
+      - SignIn
+      summary: Initiate Redirection SignIn Flow
+      description: Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page.
+      operationId: initiateRedirectionSignIn
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedirectionSignInRequest'
+      responses:
+        '200':
+          description: Redirection URL issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionSignInResponse'
+  /signin/redirection-status:
+    get:
+      tags:
+      - SignIn
+      summary: Check Redirection SignIn Status
+      description: Returns the completion status of an active redirection sign-in.
+      operationId: getRedirectionSignInStatus
+      parameters:
+      - name: sessionId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Status returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionSignInStatus'
+components:
+  schemas:
+    RedirectionSignInStatus:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - COMPLETED
+          - FAILED
+          - EXPIRED
+    RedirectionSignInResponse:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        sessionIdSignature:
+          type: string
+        redirectUrl:
+          type: string
+          format: uri
+    RedirectionSignInRequest:
+      type: object
+      required:
+      - target
+      - accessMode
+      properties:
+        target:
+          type: string
+          description: Target bank identifier from the AIS catalog.
+        accessMode:
+          type: string
+          enum:
+          - SINGLE
+          - MULTIPLE
+          - MIXED
+        ownerExternalId:
+          type: string
+          description: Optional client-side owner identifier for aggregation.
+        redirectUrl:
+          type: string
+          format: uri
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Aggregation
+  description: Cross-source aggregation
+paths:
+  /data/aggregated:
+    get:
+      tags:
+      - Aggregation
+      summary: Get Aggregated Data
+      description: Aggregates data across multiple import sessions for a single owner.
+      operationId: getAggregatedData
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Aggregated data returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregatedData'
+components:
+  schemas:
+    AggregatedData:
+      type: object
+      properties:
+        ownerExternalId:
+          type: string
+        owners:
+          type: array
+          items:
+            type: object
+        accounts:
+          type: array
+          items:
+            type: object
+        sources:
+          type: array
+          items:
+            type: string
+            enum:
+            - AIS
+            - PDF
+            - UPLOAD
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

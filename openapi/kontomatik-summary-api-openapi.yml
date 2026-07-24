@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation Summary API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Summary
+  description: Aggregated financial summaries
+paths:
+  /data-summary:
+    get:
+      tags:
+      - Summary
+      summary: Get Data Summary
+      description: Aggregated calculations per category or account.
+      operationId: getDataSummary
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Summary returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSummaryResult'
+  /data-summary-catalog:
+    get:
+      tags:
+      - Summary
+      summary: List Data Summary Catalog
+      description: Lists supported summary categories.
+      operationId: getDataSummaryCatalog
+      responses:
+        '200':
+          description: Catalog returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      type: string
+components:
+  schemas:
+    DataSummaryResult:
+      type: object
+      properties:
+        ownerExternalId:
+          type: string
+        summary:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              total:
+                type: number
+              count:
+                type: integer
+              average:
+                type: number
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

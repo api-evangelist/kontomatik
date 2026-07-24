@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation Confirmations API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Confirmations
+  description: Transaction confirmation PDF parsing
+paths:
+  /pdf/confirmation:
+    post:
+      tags:
+      - Confirmations
+      summary: Parse Confirmation (Standard)
+      description: Parses a single-transaction confirmation PDF and returns structured data.
+      operationId: parseConfirmation
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - pdf
+              properties:
+                pdf:
+                  type: string
+                  format: binary
+                ownerExternalId:
+                  type: string
+      responses:
+        '200':
+          description: Confirmation parsed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationResult'
+  /pdf/confirmation-trusted:
+    post:
+      tags:
+      - Confirmations
+      summary: Parse Confirmation (Trusted)
+      description: Parses a confirmation PDF in trusted mode, returning data even on failed verification checks.
+      operationId: parseConfirmationTrusted
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - pdf
+              properties:
+                pdf:
+                  type: string
+                  format: binary
+                ownerExternalId:
+                  type: string
+      responses:
+        '200':
+          description: Confirmation parsed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationResult'
+components:
+  schemas:
+    ConfirmationResult:
+      type: object
+      properties:
+        confirmationId:
+          type: string
+        bank:
+          type: string
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        date:
+          type: string
+          format: date
+        sender:
+          type: string
+        receiver:
+          type: string
+        description:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

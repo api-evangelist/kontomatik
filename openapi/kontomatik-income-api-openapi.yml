@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation Income API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Income
+  description: Income confirmation
+paths:
+  /income-confirmation:
+    get:
+      tags:
+      - Income
+      summary: Get Income Confirmation
+      description: Returns income-focused aggregates across four configurable timespans.
+      operationId: getIncomeConfirmation
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Income confirmation returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncomeResult'
+components:
+  schemas:
+    IncomeResult:
+      type: object
+      properties:
+        ownerExternalId:
+          type: string
+        timespans:
+          type: array
+          items:
+            type: object
+            properties:
+              window:
+                type: string
+                example: 90d
+              confirmedIncome:
+                type: number
+              transactionCount:
+                type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

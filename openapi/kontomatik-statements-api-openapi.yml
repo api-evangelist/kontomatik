@@ -1,0 +1,200 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation Statements API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Statements
+  description: Bank statement PDF parsing
+paths:
+  /pdf/statement:
+    post:
+      tags:
+      - Statements
+      summary: Parse Statement (Standard)
+      description: Parses a bank statement PDF and returns structured data. Rejects with errors if verification inconsistencies are detected.
+      operationId: parseStatement
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - pdf
+              properties:
+                pdf:
+                  type: string
+                  format: binary
+                ownerExternalId:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Statement parsed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatementResult'
+        '400':
+          description: Verification failures detected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationFailure'
+  /pdf/statement-trusted:
+    post:
+      tags:
+      - Statements
+      summary: Parse Statement (Trusted)
+      description: Parses a bank statement PDF and returns data even when verification fails. Use when the source is trusted.
+      operationId: parseStatementTrusted
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - pdf
+              properties:
+                pdf:
+                  type: string
+                  format: binary
+                ownerExternalId:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Statement parsed (possibly with verification warnings)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatementResult'
+  /pdf/statements:
+    get:
+      tags:
+      - Statements
+      summary: List Parsed Statements
+      description: Lists previously parsed statement documents for a given owner.
+      operationId: listStatements
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Statements listed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StatementSummary'
+components:
+  schemas:
+    StatementTransaction:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        description:
+          type: string
+    StatementSummary:
+      type: object
+      properties:
+        statementId:
+          type: string
+        ownerExternalId:
+          type: string
+        bank:
+          type: string
+        parsedAt:
+          type: string
+          format: date-time
+    VerificationFailure:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        failedVerifications:
+          type: array
+          items:
+            type: string
+    StatementResult:
+      type: object
+      properties:
+        statementId:
+          type: string
+        bank:
+          type: string
+        owners:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              nationalId:
+                type: string
+              address:
+                type: string
+        accounts:
+          type: array
+          items:
+            type: object
+            properties:
+              number:
+                type: string
+              currency:
+                type: string
+              transactions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StatementTransaction'
+        failedVerifications:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

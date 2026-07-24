@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Account Information Service Aggregation Labeling API
+  version: 1.0.0
+  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+
+    bank accounts across Central and Eastern Europe. Supports Single Access
+
+    (one-time data fetch) and Multiple Access (reusable consent token, up to
+
+    180 days), redirection-based SignIn Flow, and mock-bank testing.
+
+    '
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+  license:
+    name: Commercial — see https://kontomatik.com
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Labeling
+  description: Transaction categorization
+paths:
+  /labeling:
+    get:
+      tags:
+      - Labeling
+      summary: Get Transaction Labels
+      description: Returns transaction labels (salary, rent, utilities, etc.) for an owner's imported data.
+      operationId: getLabeling
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Labels returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabelingResult'
+  /external-data-labeling:
+    post:
+      tags:
+      - Labeling
+      summary: Label External Transactions
+      description: Labels transactions submitted from non-bank sources.
+      operationId: labelExternalData
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalLabelingRequest'
+      responses:
+        '200':
+          description: External labels returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabelingResult'
+components:
+  schemas:
+    LabelingResult:
+      type: object
+      properties:
+        ownerExternalId:
+          type: string
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionId:
+                type: string
+              category:
+                type: string
+              confidence:
+                type: number
+                format: float
+    ExternalLabelingRequest:
+      type: object
+      required:
+      - transactions
+      properties:
+        ownerExternalId:
+          type: string
+        transactions:
+          type: array
+          items:
+            type: object
+            properties:
+              externalId:
+                type: string
+              date:
+                type: string
+                format: date
+              amount:
+                type: number
+              currency:
+                type: string
+              description:
+                type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key issued by Kontomatik; requests must originate from a whitelisted server.
