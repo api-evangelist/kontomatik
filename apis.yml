@@ -1,91 +1,438 @@
 aid: kontomatik
 url: https://raw.githubusercontent.com/api-evangelist/kontomatik/refs/heads/main/apis.yml
 apis:
-  - aid: kontomatik:kontomatik-ais-api
-    name: Kontomatik Account Information Service API
-    tags:
-      - Open Banking
-      - PSD2
-      - AIS
-      - Bank Data
-    humanURL: https://developer.kontomatik.com/docs/
-    properties:
-      - url: https://developer.kontomatik.com/first-steps/api-overview/
-        type: Documentation
-      - url: https://developer.kontomatik.com/docs/
-        type: Documentation
-      - url: openapi/kontomatik-ais-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/kontomatik-owner-schema.json
-        type: JSONSchema
-      - url: json-schema/kontomatik-account-schema.json
-        type: JSONSchema
-      - url: json-schema/kontomatik-transaction-schema.json
-        type: JSONSchema
-      - url: json-ld/kontomatik-context.jsonld
-        type: JSONLD
-    description: >-
-      PSD2-regulated Account Information Service for connecting end-user bank accounts across Poland, Czech Republic,
-      Spain, Portugal, Romania, Lithuania, Latvia, and Estonia. Supports Single Access (one-time fetch), Multiple Access
-      (up to 180-day consent tokens), and Mixed Access. Includes redirection SignIn Flow, background import commands,
-      consent revocation, and a KontoBank mock-bank sandbox.
-  - aid: kontomatik:kontomatik-pdf-parsing-api
-    name: Kontomatik PDF Parsing API
-    tags:
-      - PDF Parsing
-      - Document AI
-      - Bank Statements
-      - Poland
-    humanURL: https://developer.kontomatik.com/docs/
-    properties:
-      - url: https://developer.kontomatik.com/docs/
-        type: Documentation
-      - url: openapi/kontomatik-pdf-parsing-api-openapi.yml
-        type: OpenAPI
-      - url: examples/kontomatik-pdf-statement-example.json
-        type: Examples
-    description: >-
-      Extract structured owner, account, and transaction data from Polish bank statement and transaction confirmation
-      PDFs. Offers standard mode (rejects on verification failures) and trusted mode (returns data even when
-      verification fails), plus a per-owner history endpoint and the PDF coverage catalog.
-  - aid: kontomatik:kontomatik-data-analysis-api
-    name: Kontomatik Data Analysis API
-    tags:
-      - Transaction Labeling
-      - Credit Scoring
-      - Income Verification
-      - Profiling
-      - Machine Learning
-    humanURL: https://developer.kontomatik.com/docs/
-    properties:
-      - url: https://developer.kontomatik.com/docs/
-        type: Documentation
-      - url: openapi/kontomatik-data-analysis-api-openapi.yml
-        type: OpenAPI
-      - url: examples/kontomatik-score-example.json
-        type: Examples
-      - url: json-structure/kontomatik-owner-graph-structure.json
-        type: JSONStructure
-    description: >-
-      ML-powered analytical services on top of imported bank data — transaction labeling, vendor recognition (beta),
-      credit scoring with repayment probability, behavioral profiling (beta), owner features, data summaries by
-      category, income confirmation across four configurable timespans, external-data labeling for non-bank
-      transactions, cross-source aggregation, and owner data deletion.
-  - aid: kontomatik:kontomatik-report-api
-    name: Kontomatik Report API
-    tags:
-      - Reporting
-      - Beta
-      - Bank Data
-    humanURL: https://developer.kontomatik.com/docs/
-    properties:
-      - url: https://developer.kontomatik.com/docs/
-        type: Documentation
-      - url: openapi/kontomatik-report-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Create, list, and retrieve shareable Kontomatik Report tokens that bundle imported AIS and PDF data together with
-      the analytical outputs into authenticated, time-bound deliverables (beta).
+- aid: kontomatik:kontomatik-aggregation-api
+  name: Kontomatik Aggregation API
+  description: Cross-source aggregation
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Aggregation
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-aggregation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-catalog-api
+  name: Kontomatik Catalog API
+  description: Bank coverage catalog
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-command-api
+  name: Kontomatik Command API
+  description: Background import commands and consent management
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Command
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-command-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-confirmations-api
+  name: Kontomatik Confirmations API
+  description: Transaction confirmation PDF parsing
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Confirmations
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-confirmations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-features-api
+  name: Kontomatik Features API
+  description: Owner-level financial metrics
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Features
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-features-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-income-api
+  name: Kontomatik Income API
+  description: Income confirmation
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Income
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-income-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-labeling-api
+  name: Kontomatik Labeling API
+  description: Transaction categorization
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Labeling
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-labeling-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-mock-api
+  name: Kontomatik Mock API
+  description: Test session generation against KontoBank
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Mock
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-mock-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-owner-api
+  name: Kontomatik Owner API
+  description: Owner data lifecycle
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Owner
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-owner-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-profile-api
+  name: Kontomatik Profile API
+  description: Behavioral profiling (beta)
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Profile
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-profile-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-reports-api
+  name: Kontomatik Reports API
+  description: Report token lifecycle
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-score-api
+  name: Kontomatik Score API
+  description: ML credit scoring
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Score
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-score-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-signin-api
+  name: Kontomatik SignIn API
+  description: Redirection-based bank authentication flow
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - SignIn
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-signin-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-statements-api
+  name: Kontomatik Statements API
+  description: Bank statement PDF parsing
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-statements-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-summary-api
+  name: Kontomatik Summary API
+  description: Aggregated financial summaries
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Summary
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-summary-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-vendors-api
+  name: Kontomatik Vendors API
+  description: Vendor / counterparty recognition (beta)
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Vendors
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-vendors-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
 name: Kontomatik
 tags:
   - Open Banking
@@ -98,7 +445,20 @@ tags:
   - Transaction Labeling
   - PDF Parsing
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/kontomatik.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
