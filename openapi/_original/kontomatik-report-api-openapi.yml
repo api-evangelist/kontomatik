@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Kontomatik Report API
+  version: 1.0.0
+  description: |
+    Kontomatik Report (beta) — generate, list, and retrieve shareable
+    report tokens summarizing imported and analyzed owner data.
+  contact:
+    name: Kontomatik Support
+    email: support@kontomatik.com
+    url: https://developer.kontomatik.com/
+servers:
+- url: https://api.kontomatik.com/v1
+  description: Production
+- url: https://test.api.kontomatik.com/v1
+  description: Test
+security:
+- ApiKeyAuth: []
+tags:
+- name: Reports
+  description: Report token lifecycle
+paths:
+  /report/token:
+    post:
+      tags: [Reports]
+      summary: Create Report Token
+      description: Creates a report token granting authenticated access to a generated owner report.
+      operationId: createReportToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ownerExternalId]
+              properties:
+                ownerExternalId: {type: string}
+                reportType:
+                  type: string
+                  enum: [STANDARD, EXTENDED]
+                  default: STANDARD
+      responses:
+        '200':
+          description: Token created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportToken'
+  /report/tokens:
+    get:
+      tags: [Reports]
+      summary: List Report Tokens
+      description: Lists available report tokens for the calling organization.
+      operationId: listReportTokens
+      parameters:
+      - name: ownerExternalId
+        in: query
+        required: false
+        schema: {type: string}
+      responses:
+        '200':
+          description: Tokens listed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tokens:
+                    type: array
+                    items: {$ref: '#/components/schemas/ReportToken'}
+  /report/{token}:
+    get:
+      tags: [Reports]
+      summary: Get Report Content
+      description: Fetches the report content addressed by a report token.
+      operationId: getReportByToken
+      parameters:
+      - name: token
+        in: path
+        required: true
+        schema: {type: string}
+      responses:
+        '200':
+          description: Report returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    ReportToken:
+      type: object
+      properties:
+        token: {type: string}
+        ownerExternalId: {type: string}
+        createdAt: {type: string, format: date-time}
+        expiresAt: {type: string, format: date-time}
+        reportType: {type: string, enum: [STANDARD, EXTENDED]}
+    Report:
+      type: object
+      properties:
+        token: {type: string}
+        ownerExternalId: {type: string}
+        generatedAt: {type: string, format: date-time}
+        summary: {type: object}
+        sections:
+          type: array
+          items:
+            type: object
+            properties:
+              name: {type: string}
+              content: {type: object}
