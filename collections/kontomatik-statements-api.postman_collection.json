@@ -1,0 +1,489 @@
+{
+  "item": [
+    {
+      "id": "20360266-a7bf-4d88-ac3f-15f1128d461f",
+      "name": "Statements",
+      "description": {
+        "content": "Bank statement PDF parsing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "feb2cc01-12f4-4553-919f-a6f4fac526a2",
+          "name": "Parse Statement (Standard)",
+          "request": {
+            "name": "Parse Statement (Standard)",
+            "description": {
+              "content": "Parses a bank statement PDF and returns structured data. Rejects with errors if verification inconsistencies are detected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf",
+                "statement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "pdf",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "password",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9db58961-579b-4583-8601-ac0a36689d97",
+              "name": "Statement parsed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf",
+                    "statement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "pdf",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "ownerExternalId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statementId\": \"string\",\n  \"bank\": \"string\",\n  \"owners\": [\n    {\n      \"name\": \"string\",\n      \"nationalId\": \"string\",\n      \"address\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"nationalId\": \"string\",\n      \"address\": \"string\"\n    }\n  ],\n  \"accounts\": [\n    {\n      \"number\": \"string\",\n      \"currency\": \"string\",\n      \"transactions\": [\n        {\n          \"date\": \"2009-01-05\",\n          \"amount\": 8279.87743937401,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"date\": \"2000-09-28\",\n          \"amount\": 4646.843550783539,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    },\n    {\n      \"number\": \"string\",\n      \"currency\": \"string\",\n      \"transactions\": [\n        {\n          \"date\": \"1993-03-30\",\n          \"amount\": 3198.4787650239723,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"date\": \"1948-04-27\",\n          \"amount\": 118.48788769886376,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"failedVerifications\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "878cb891-8a81-4274-bb09-68f98d4eb5d2",
+              "name": "Verification failures detected",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf",
+                    "statement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "pdf",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "ownerExternalId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"failedVerifications\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba48ce61-b8d8-49d2-a39f-3d4fbc4754bb",
+          "name": "Parse Statement (Trusted)",
+          "request": {
+            "name": "Parse Statement (Trusted)",
+            "description": {
+              "content": "Parses a bank statement PDF and returns data even when verification fails. Use when the source is trusted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf",
+                "statement-trusted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "pdf",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "password",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3dac4270-e8cb-415e-bc91-56d5316f6968",
+              "name": "Statement parsed (possibly with verification warnings)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf",
+                    "statement-trusted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "pdf",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "ownerExternalId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statementId\": \"string\",\n  \"bank\": \"string\",\n  \"owners\": [\n    {\n      \"name\": \"string\",\n      \"nationalId\": \"string\",\n      \"address\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"nationalId\": \"string\",\n      \"address\": \"string\"\n    }\n  ],\n  \"accounts\": [\n    {\n      \"number\": \"string\",\n      \"currency\": \"string\",\n      \"transactions\": [\n        {\n          \"date\": \"1993-02-15\",\n          \"amount\": 1342.0194666277275,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"date\": \"2003-02-27\",\n          \"amount\": 1309.5259966499095,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    },\n    {\n      \"number\": \"string\",\n      \"currency\": \"string\",\n      \"transactions\": [\n        {\n          \"date\": \"1999-07-28\",\n          \"amount\": 1918.1928597997933,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"date\": \"2012-07-20\",\n          \"amount\": 6930.257814925677,\n          \"currency\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"failedVerifications\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75c7103b-5c17-4928-a03d-fb90e5b37ac5",
+          "name": "List Parsed Statements",
+          "request": {
+            "name": "List Parsed Statements",
+            "description": {
+              "content": "Lists previously parsed statement documents for a given owner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf",
+                "statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92d7462f-9c41-457a-b0f2-f8db244af329",
+              "name": "Statements listed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statements\": [\n    {\n      \"statementId\": \"string\",\n      \"ownerExternalId\": \"string\",\n      \"bank\": \"string\",\n      \"parsedAt\": \"1996-04-28T10:07:54.722Z\"\n    },\n    {\n      \"statementId\": \"string\",\n      \"ownerExternalId\": \"string\",\n      \"bank\": \"string\",\n      \"parsedAt\": \"2003-08-15T21:18:33.132Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "69600492-b83f-484d-aa3f-09935f514cbb",
+    "name": "Kontomatik Account Information Service Aggregation Statements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PSD2-regulated Account Information Service (AIS) for connecting to end-user\nbank accounts across Central and Eastern Europe. Supports Single Access\n(one-time data fetch) and Multiple Access (reusable consent token, up to\n180 days), redirection-based SignIn Flow, and mock-bank testing.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}

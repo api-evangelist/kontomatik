@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "24400f1d-c809-4f55-b739-3225842da0c9",
+      "name": "Summary",
+      "description": {
+        "content": "Aggregated financial summaries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9da34a52-223e-4d81-9220-1085fef0ecd9",
+          "name": "Get Data Summary",
+          "request": {
+            "name": "Get Data Summary",
+            "description": {
+              "content": "Aggregated calculations per category or account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerExternalId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1744948f-9a34-4e17-a700-868050872aae",
+              "name": "Summary returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"summary\": {\n    \"key_0\": {\n      \"total\": 6083.727936002639,\n      \"count\": 69,\n      \"average\": 9362.98351478488\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6886bc3e-14a0-4d27-a07e-8772c29a4cd7",
+          "name": "List Data Summary Catalog",
+          "request": {
+            "name": "List Data Summary Catalog",
+            "description": {
+              "content": "Lists supported summary categories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-summary-catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6452d551-644e-426f-b0fa-cb33c658d35a",
+              "name": "Catalog returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-summary-catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1c12c076-c538-495e-bb61-37fb277f24d0",
+    "name": "Kontomatik Account Information Service Aggregation Summary API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PSD2-regulated Account Information Service (AIS) for connecting to end-user\nbank accounts across Central and Eastern Europe. Supports Single Access\n(one-time data fetch) and Multiple Access (reusable consent token, up to\n180 days), redirection-based SignIn Flow, and mock-bank testing.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}

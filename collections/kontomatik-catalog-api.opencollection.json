@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Catalog API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List AIS Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/ais-catalog"
+          },
+          "docs": "Returns the catalog of supported banks for the Account Information Service."
+        },
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/health"
+          },
+          "docs": "Health Check"
+        },
+        {
+          "info": {
+            "name": "List PDF Coverage Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/pdf-catalog"
+          },
+          "docs": "Returns the list of Polish banks supported for PDF statement parsing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "acd8b367-0091-4479-8367-9d3cb66143bb",
+      "name": "SignIn",
+      "description": {
+        "content": "Redirection-based bank authentication flow",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80ead523-3e11-48a7-9193-25986f776434",
+          "name": "Initiate Redirection SignIn Flow",
+          "request": {
+            "name": "Initiate Redirection SignIn Flow",
+            "description": {
+              "content": "Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "signin",
+                "redirection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target\": \"<string>\",\n  \"accessMode\": \"<string>\",\n  \"ownerExternalId\": \"<string>\",\n  \"redirectUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42f4eb10-e9a8-4d41-91c7-aa58900bc11d",
+              "name": "Redirection URL issued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signin",
+                    "redirection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target\": \"<string>\",\n  \"accessMode\": \"<string>\",\n  \"ownerExternalId\": \"<string>\",\n  \"redirectUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"sessionIdSignature\": \"string\",\n  \"redirectUrl\": \"http://iCipmMYVXBhGZnSdKaRkvW.wifhHGQMYi86+DhGFfKqRq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2497bf63-378a-4b46-9543-78ae6abfdf4b",
+          "name": "Check Redirection SignIn Status",
+          "request": {
+            "name": "Check Redirection SignIn Status",
+            "description": {
+              "content": "Returns the completion status of an active redirection sign-in.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "signin",
+                "redirection-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sessionId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e210ebdb-5e4b-40e9-9484-9d45992c732c",
+              "name": "Status returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signin",
+                    "redirection-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"status\": \"COMPLETED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fd2bd8a2-69c6-4ffd-bfde-82b97bbaf046",
+    "name": "Kontomatik Account Information Service Aggregation SignIn API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PSD2-regulated Account Information Service (AIS) for connecting to end-user\nbank accounts across Central and Eastern Europe. Supports Single Access\n(one-time data fetch) and Multiple Access (reusable consent token, up to\n180 days), redirection-based SignIn Flow, and mock-bank testing.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}

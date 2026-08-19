@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Command API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Command",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Default Data Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/command/default-import.xml",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Initiates background import of transactions, accounts, and owner data from the authenticated session."
+        },
+        {
+          "info": {
+            "name": "Get Command Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/command/:id.xml",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Polls the status of a previously issued import command and returns results when complete."
+        },
+        {
+          "info": {
+            "name": "Reuse Multiple Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/command/reuse-multiple-access.xml",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates a new import session using an existing Multiple Access consent token (no end-user reauthentication)."
+        },
+        {
+          "info": {
+            "name": "Delete Multiple Access Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/command/delete-multiple-access.xml",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Revokes a Multiple Access consent token, ending continuous access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

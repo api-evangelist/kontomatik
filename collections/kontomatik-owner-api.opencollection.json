@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Owner API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Owner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Owner Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/data/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently removes all data for the specified owner. Default retention is 24 hours."
+        },
+        {
+          "info": {
+            "name": "Upload Owner Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/owner-upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads custom owner / account / transaction data in XML or JSON for analysis alongside bank-sourced data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

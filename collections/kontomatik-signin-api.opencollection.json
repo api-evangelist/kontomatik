@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation SignIn API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SignIn",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Redirection SignIn Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/signin/redirection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page."
+        },
+        {
+          "info": {
+            "name": "Check Redirection SignIn Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/signin/redirection-status",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the completion status of an active redirection sign-in."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

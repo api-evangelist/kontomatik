@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Income API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Income",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Income Confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/income-confirmation",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns income-focused aggregates across four configurable timespans."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

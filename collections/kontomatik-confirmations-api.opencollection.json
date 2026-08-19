@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Confirmations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Confirmations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Parse Confirmation (Standard)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/pdf/confirmation",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ownerExternalId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parses a single-transaction confirmation PDF and returns structured data."
+        },
+        {
+          "info": {
+            "name": "Parse Confirmation (Trusted)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/pdf/confirmation-trusted",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "pdf",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ownerExternalId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Parses a confirmation PDF in trusted mode, returning data even on failed verification checks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

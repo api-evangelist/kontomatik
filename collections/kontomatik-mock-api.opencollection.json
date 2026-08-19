@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Mock API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Mock Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kontomatik.com/v1/mock-session.xml"
+          },
+          "docs": "Generates a test session against the KontoBank mock bank for sandbox testing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

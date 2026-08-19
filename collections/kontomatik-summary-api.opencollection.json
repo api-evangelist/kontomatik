@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kontomatik Account Information Service Aggregation Summary API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Data Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/data-summary",
+            "params": [
+              {
+                "name": "ownerExternalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Aggregated calculations per category or account."
+        },
+        {
+          "info": {
+            "name": "List Data Summary Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kontomatik.com/v1/data-summary-catalog"
+          },
+          "docs": "Lists supported summary categories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

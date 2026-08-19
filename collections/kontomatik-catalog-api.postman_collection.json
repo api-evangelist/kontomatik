@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "0285a27b-fdd5-4255-9fa6-fa68da4e44ef",
+      "name": "Catalog",
+      "description": {
+        "content": "Bank coverage catalog",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72eba72a-afc5-4312-962a-0cca14f9c900",
+          "name": "List AIS Catalog",
+          "request": {
+            "name": "List AIS Catalog",
+            "description": {
+              "content": "Returns the catalog of supported banks for the Account Information Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ais-catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25258639-f35d-4c13-92e7-dc1629a1497c",
+              "name": "Catalog returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ais-catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"targets\": [\n    {\n      \"id\": \"string\",\n      \"country\": \"PL\",\n      \"name\": \"string\",\n      \"accessModes\": [\n        \"MIXED\",\n        \"SINGLE\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"country\": \"PL\",\n      \"name\": \"string\",\n      \"accessModes\": [\n        \"SINGLE\",\n        \"SINGLE\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "186c4404-5df6-4f3c-a6fd-63b865de7767",
+          "name": "Health Check",
+          "request": {
+            "name": "Health Check",
+            "description": {},
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2317ac38-9079-4994-9bd4-8aa204b9576a",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "681b092f-caf5-42a1-8c61-293a4284a02f",
+          "name": "List PDF Coverage Catalog",
+          "request": {
+            "name": "List PDF Coverage Catalog",
+            "description": {
+              "content": "Returns the list of Polish banks supported for PDF statement parsing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf-catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb612a65-5a98-4420-abf9-b1aaf4b76e96",
+              "name": "Catalog returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"banks\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"country\": \"PL\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"country\": \"PL\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kontomatik.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c39a7860-99cc-47d9-8de7-2327d77ffbe7",
+    "name": "Kontomatik Account Information Service Aggregation Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PSD2-regulated Account Information Service (AIS) for connecting to end-user\nbank accounts across Central and Eastern Europe. Supports Single Access\n(one-time data fetch) and Multiple Access (reusable consent token, up to\n180 days), redirection-based SignIn Flow, and mock-bank testing.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+      "type": "text/plain"
+    }
+  }
+}
