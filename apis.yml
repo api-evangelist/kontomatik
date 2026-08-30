@@ -330,7 +330,7 @@ apis:
   description: Redirection-based bank authentication flow
   humanURL: https://developer.kontomatik.com/docs/
   tags:
-  - Sign In
+  - SignIn
   tags_raw:
   - SignIn
   properties:
