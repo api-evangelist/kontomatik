@@ -476,6 +476,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/kontomatik.png
 access: 3rd-Party
 common:
+  - type: Website
+    url: https://www.kontomatik.com/
   - type: AgenticAccess
     url: agentic-access/kontomatik-agentic-access.yml
   - type: TrustCenter
