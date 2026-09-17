@@ -325,35 +325,6 @@ apis:
     url: examples/kontomatik-score-example.json
   - type: JSONStructure
     url: json-structure/kontomatik-owner-graph-structure.json
-- aid: kontomatik:kontomatik-signin-api
-  name: Kontomatik SignIn API
-  description: Redirection-based bank authentication flow
-  humanURL: https://developer.kontomatik.com/docs/
-  tags:
-  - Sign In
-  tags_raw:
-  - SignIn
-  properties:
-  - type: OpenAPI
-    url: openapi/kontomatik-signin-api-openapi.yml
-  - type: Documentation
-    url: https://developer.kontomatik.com/first-steps/api-overview/
-  - type: Documentation
-    url: https://developer.kontomatik.com/docs/
-  - type: JSONSchema
-    url: json-schema/kontomatik-owner-schema.json
-  - type: JSONSchema
-    url: json-schema/kontomatik-account-schema.json
-  - type: JSONSchema
-    url: json-schema/kontomatik-transaction-schema.json
-  - type: JSONLD
-    url: json-ld/kontomatik-context.jsonld
-  - type: Examples
-    url: examples/kontomatik-pdf-statement-example.json
-  - type: Examples
-    url: examples/kontomatik-score-example.json
-  - type: JSONStructure
-    url: json-structure/kontomatik-owner-graph-structure.json
 - aid: kontomatik:kontomatik-statements-api
   name: Kontomatik Statements API
   description: Bank statement PDF parsing
@@ -417,6 +388,33 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kontomatik-vendors-api-openapi.yml
+  - type: Documentation
+    url: https://developer.kontomatik.com/first-steps/api-overview/
+  - type: Documentation
+    url: https://developer.kontomatik.com/docs/
+  - type: JSONSchema
+    url: json-schema/kontomatik-owner-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-account-schema.json
+  - type: JSONSchema
+    url: json-schema/kontomatik-transaction-schema.json
+  - type: JSONLD
+    url: json-ld/kontomatik-context.jsonld
+  - type: Examples
+    url: examples/kontomatik-pdf-statement-example.json
+  - type: Examples
+    url: examples/kontomatik-score-example.json
+  - type: JSONStructure
+    url: json-structure/kontomatik-owner-graph-structure.json
+- aid: kontomatik:kontomatik-sign-in-api
+  name: Kontomatik Sign In API
+  description: Redirection-based bank authentication flow
+  humanURL: https://developer.kontomatik.com/docs/
+  tags:
+  - Sign In
+  properties:
+  - type: OpenAPI
+    url: openapi/kontomatik-sign-in-api-openapi.yml
   - type: Documentation
     url: https://developer.kontomatik.com/first-steps/api-overview/
   - type: Documentation
