@@ -249,6 +249,8 @@ apis:
   description: Behavioral profiling (beta)
   humanURL: https://developer.kontomatik.com/docs/
   tags:
+  - Profiles
+  tags_raw:
   - Profile
   properties:
   - type: OpenAPI
