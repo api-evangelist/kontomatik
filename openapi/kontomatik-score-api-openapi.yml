@@ -1,22 +1,18 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kontomatik Account Information Service Aggregation Score API
+  title: Kontomatik Data Analysis Score API
   version: 1.0.0
-  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+  description: 'Analytical services running on top of imported AIS, PDF, or uploaded data.
 
-    bank accounts across Central and Eastern Europe. Supports Single Access
+    Includes transaction labeling, vendor recognition, ML-based credit scoring,
 
-    (one-time data fetch) and Multiple Access (reusable consent token, up to
+    behavioral profiling, owner features, data summaries, and income
 
-    180 days), redirection-based SignIn Flow, and mock-bank testing.
-
-    '
+    confirmation across configurable timespans.'
   contact:
     name: Kontomatik Support
     email: support@kontomatik.com
     url: https://developer.kontomatik.com/
-  license:
-    name: Commercial — see https://kontomatik.com
 servers:
 - url: https://api.kontomatik.com/v1
   description: Production
@@ -70,4 +66,3 @@ components:
       type: apiKey
       in: header
       name: X-Api-Key
-      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

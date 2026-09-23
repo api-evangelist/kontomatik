@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kontomatik Account Information Service Aggregation Mock API
+  title: Kontomatik Account Information Service Mock API
   version: 1.0.0
   description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
 
@@ -8,9 +8,7 @@ info:
 
     (one-time data fetch) and Multiple Access (reusable consent token, up to
 
-    180 days), redirection-based SignIn Flow, and mock-bank testing.
-
-    '
+    180 days), redirection-based SignIn Flow, and mock-bank testing.'
   contact:
     name: Kontomatik Support
     email: support@kontomatik.com

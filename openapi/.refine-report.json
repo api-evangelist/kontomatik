@@ -1,44 +1,60 @@
 {
   "provider": "kontomatik",
   "sources": [
-    "kontomatik-aggregation-api-openapi.yml",
-    "kontomatik-catalog-api-openapi.yml",
-    "kontomatik-command-api-openapi.yml",
-    "kontomatik-confirmations-api-openapi.yml",
-    "kontomatik-features-api-openapi.yml",
-    "kontomatik-income-api-openapi.yml",
-    "kontomatik-labeling-api-openapi.yml",
-    "kontomatik-mock-api-openapi.yml",
-    "kontomatik-owner-api-openapi.yml",
-    "kontomatik-profile-api-openapi.yml",
-    "kontomatik-reports-api-openapi.yml",
-    "kontomatik-score-api-openapi.yml",
-    "kontomatik-signin-api-openapi.yml",
-    "kontomatik-statements-api-openapi.yml",
-    "kontomatik-summary-api-openapi.yml",
-    "kontomatik-vendors-api-openapi.yml"
+    "_original/kontomatik-ais-api-openapi.yml",
+    "_original/kontomatik-data-analysis-api-openapi.yml",
+    "_original/kontomatik-pdf-parsing-api-openapi.yml",
+    "_original/kontomatik-report-api-openapi.yml"
   ],
   "outputs": [
-    "kontomatik-aggregation-api-openapi.yml",
     "kontomatik-catalog-api-openapi.yml",
     "kontomatik-command-api-openapi.yml",
-    "kontomatik-confirmations-api-openapi.yml",
+    "kontomatik-mock-api-openapi.yml",
+    "kontomatik-signin-api-openapi.yml",
+    "kontomatik-aggregation-api-openapi.yml",
     "kontomatik-features-api-openapi.yml",
     "kontomatik-income-api-openapi.yml",
     "kontomatik-labeling-api-openapi.yml",
-    "kontomatik-mock-api-openapi.yml",
     "kontomatik-owner-api-openapi.yml",
     "kontomatik-profile-api-openapi.yml",
-    "kontomatik-reports-api-openapi.yml",
     "kontomatik-score-api-openapi.yml",
-    "kontomatik-signin-api-openapi.yml",
-    "kontomatik-statements-api-openapi.yml",
     "kontomatik-summary-api-openapi.yml",
-    "kontomatik-vendors-api-openapi.yml"
+    "kontomatik-vendors-api-openapi.yml",
+    "kontomatik-confirmations-api-openapi.yml",
+    "kontomatik-statements-api-openapi.yml",
+    "kontomatik-reports-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "kontomatik-ais-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "kontomatik-data-analysis-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "kontomatik-pdf-parsing-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "kontomatik-report-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Catalog' spans 2 source specs (kontomatik-ais-api-openapi.yml, kontomatik-pdf-parsing-api-openapi.yml): per-path servers applied",
+    "superseded outputs removed: kontomatik-sign-in-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 16 total)"
+  ],
+  "skipped": [
+    "kontomatik-aggregation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-command-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-confirmations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-features-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-income-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-labeling-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-mock-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-owner-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-score-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-sign-in-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-summary-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kontomatik-vendors-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

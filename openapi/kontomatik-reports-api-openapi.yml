@@ -1,22 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kontomatik Account Information Service Aggregation Reports API
+  title: Kontomatik Report Reports API
   version: 1.0.0
-  description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
+  description: 'Kontomatik Report (beta) — generate, list, and retrieve shareable
 
-    bank accounts across Central and Eastern Europe. Supports Single Access
-
-    (one-time data fetch) and Multiple Access (reusable consent token, up to
-
-    180 days), redirection-based SignIn Flow, and mock-bank testing.
-
-    '
+    report tokens summarizing imported and analyzed owner data.'
   contact:
     name: Kontomatik Support
     email: support@kontomatik.com
     url: https://developer.kontomatik.com/
-  license:
-    name: Commercial — see https://kontomatik.com
 servers:
 - url: https://api.kontomatik.com/v1
   description: Production
@@ -106,24 +98,6 @@ paths:
                 $ref: '#/components/schemas/Report'
 components:
   schemas:
-    ReportToken:
-      type: object
-      properties:
-        token:
-          type: string
-        ownerExternalId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        expiresAt:
-          type: string
-          format: date-time
-        reportType:
-          type: string
-          enum:
-          - STANDARD
-          - EXTENDED
     Report:
       type: object
       properties:
@@ -145,9 +119,26 @@ components:
                 type: string
               content:
                 type: object
+    ReportToken:
+      type: object
+      properties:
+        token:
+          type: string
+        ownerExternalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        reportType:
+          type: string
+          enum:
+          - STANDARD
+          - EXTENDED
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-Api-Key
-      description: API key issued by Kontomatik; requests must originate from a whitelisted server.

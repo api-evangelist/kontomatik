@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kontomatik Account Information Service Aggregation SignIn API
+  title: Kontomatik Account Information Service Sign In API
   version: 1.0.0
   description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
 
@@ -8,9 +8,7 @@ info:
 
     (one-time data fetch) and Multiple Access (reusable consent token, up to
 
-    180 days), redirection-based SignIn Flow, and mock-bank testing.
-
-    '
+    180 days), redirection-based SignIn Flow, and mock-bank testing.'
   contact:
     name: Kontomatik Support
     email: support@kontomatik.com
@@ -25,13 +23,13 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: SignIn
+- name: Sign In
   description: Redirection-based bank authentication flow
 paths:
   /signin/redirection:
     post:
       tags:
-      - SignIn
+      - Sign In
       summary: Initiate Redirection SignIn Flow
       description: Starts a redirection-based bank authentication flow and returns a redirect URL to the bank's authorization page.
       operationId: initiateRedirectionSignIn
@@ -51,7 +49,7 @@ paths:
   /signin/redirection-status:
     get:
       tags:
-      - SignIn
+      - Sign In
       summary: Check Redirection SignIn Status
       description: Returns the completion status of an active redirection sign-in.
       operationId: getRedirectionSignInStatus
@@ -70,28 +68,6 @@ paths:
                 $ref: '#/components/schemas/RedirectionSignInStatus'
 components:
   schemas:
-    RedirectionSignInStatus:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - COMPLETED
-          - FAILED
-          - EXPIRED
-    RedirectionSignInResponse:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        sessionIdSignature:
-          type: string
-        redirectUrl:
-          type: string
-          format: uri
     RedirectionSignInRequest:
       type: object
       required:
@@ -113,6 +89,28 @@ components:
         redirectUrl:
           type: string
           format: uri
+    RedirectionSignInResponse:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        sessionIdSignature:
+          type: string
+        redirectUrl:
+          type: string
+          format: uri
+    RedirectionSignInStatus:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - COMPLETED
+          - FAILED
+          - EXPIRED
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

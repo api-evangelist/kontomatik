@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kontomatik Account Information Service Aggregation Command API
+  title: Kontomatik Account Information Service Command API
   version: 1.0.0
   description: 'PSD2-regulated Account Information Service (AIS) for connecting to end-user
 
@@ -8,9 +8,7 @@ info:
 
     (one-time data fetch) and Multiple Access (reusable consent token, up to
 
-    180 days), redirection-based SignIn Flow, and mock-bank testing.
-
-    '
+    180 days), redirection-based SignIn Flow, and mock-bank testing.'
   contact:
     name: Kontomatik Support
     email: support@kontomatik.com
@@ -106,6 +104,16 @@ paths:
           description: Consent revoked
 components:
   schemas:
+    CommandAccepted:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
     Transaction:
       type: object
       properties:
@@ -124,6 +132,13 @@ components:
         counterpartyAccount:
           type: string
         label:
+          type: string
+    DeleteMultipleAccessRequest:
+      type: object
+      required:
+      - multipleAccessToken
+      properties:
+        multipleAccessToken:
           type: string
     CommandResult:
       type: object
@@ -149,16 +164,6 @@ components:
             $ref: '#/components/schemas/Account'
         multipleAccessToken:
           type: string
-    ReuseMultipleAccessRequest:
-      type: object
-      required:
-      - multipleAccessToken
-      properties:
-        multipleAccessToken:
-          type: string
-        since:
-          type: string
-          format: date
     DefaultImportRequest:
       type: object
       required:
@@ -174,34 +179,6 @@ components:
           format: date
         ownerExternalId:
           type: string
-    DeleteMultipleAccessRequest:
-      type: object
-      required:
-      - multipleAccessToken
-      properties:
-        multipleAccessToken:
-          type: string
-    Owner:
-      type: object
-      properties:
-        externalId:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        nationalId:
-          type: string
-    CommandAccepted:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - QUEUED
-          - RUNNING
     Account:
       type: object
       properties:
@@ -219,6 +196,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
+    Owner:
+      type: object
+      properties:
+        externalId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        nationalId:
+          type: string
+    ReuseMultipleAccessRequest:
+      type: object
+      required:
+      - multipleAccessToken
+      properties:
+        multipleAccessToken:
+          type: string
+        since:
+          type: string
+          format: date
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
