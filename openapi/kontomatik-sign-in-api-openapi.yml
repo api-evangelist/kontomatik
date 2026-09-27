@@ -68,27 +68,6 @@ paths:
                 $ref: '#/components/schemas/RedirectionSignInStatus'
 components:
   schemas:
-    RedirectionSignInRequest:
-      type: object
-      required:
-      - target
-      - accessMode
-      properties:
-        target:
-          type: string
-          description: Target bank identifier from the AIS catalog.
-        accessMode:
-          type: string
-          enum:
-          - SINGLE
-          - MULTIPLE
-          - MIXED
-        ownerExternalId:
-          type: string
-          description: Optional client-side owner identifier for aggregation.
-        redirectUrl:
-          type: string
-          format: uri
     RedirectionSignInResponse:
       type: object
       properties:
@@ -111,6 +90,27 @@ components:
           - COMPLETED
           - FAILED
           - EXPIRED
+    RedirectionSignInRequest:
+      type: object
+      required:
+      - target
+      - accessMode
+      properties:
+        target:
+          type: string
+          description: Target bank identifier from the AIS catalog.
+        accessMode:
+          type: string
+          enum:
+          - SINGLE
+          - MULTIPLE
+          - MIXED
+        ownerExternalId:
+          type: string
+          description: Optional client-side owner identifier for aggregation.
+        redirectUrl:
+          type: string
+          format: uri
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
