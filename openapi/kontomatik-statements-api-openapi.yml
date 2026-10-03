@@ -142,17 +142,6 @@ components:
         parsedAt:
           type: string
           format: date-time
-    VerificationFailure:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        failedVerifications:
-          type: array
-          items:
-            type: string
     StatementResult:
       type: object
       properties:
@@ -184,6 +173,17 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/StatementTransaction'
+        failedVerifications:
+          type: array
+          items:
+            type: string
+    VerificationFailure:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
         failedVerifications:
           type: array
           items:

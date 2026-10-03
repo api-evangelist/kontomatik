@@ -98,24 +98,6 @@ paths:
                 $ref: '#/components/schemas/Report'
 components:
   schemas:
-    ReportToken:
-      type: object
-      properties:
-        token:
-          type: string
-        ownerExternalId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        expiresAt:
-          type: string
-          format: date-time
-        reportType:
-          type: string
-          enum:
-          - STANDARD
-          - EXTENDED
     Report:
       type: object
       properties:
@@ -137,6 +119,24 @@ components:
                 type: string
               content:
                 type: object
+    ReportToken:
+      type: object
+      properties:
+        token:
+          type: string
+        ownerExternalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        reportType:
+          type: string
+          enum:
+          - STANDARD
+          - EXTENDED
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -104,30 +104,16 @@ paths:
           description: Consent revoked
 components:
   schemas:
-    DeleteMultipleAccessRequest:
+    ReuseMultipleAccessRequest:
       type: object
       required:
       - multipleAccessToken
       properties:
         multipleAccessToken:
           type: string
-    Account:
-      type: object
-      properties:
-        number:
+        since:
           type: string
-        currency:
-          type: string
-        balance:
-          type: number
-          format: double
-        availableBalance:
-          type: number
-          format: double
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
+          format: date
     DefaultImportRequest:
       type: object
       required:
@@ -143,6 +129,25 @@ components:
           format: date
         ownerExternalId:
           type: string
+    Transaction:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        description:
+          type: string
+        counterpartyName:
+          type: string
+        counterpartyAccount:
+          type: string
+        label:
+          type: string
     CommandAccepted:
       type: object
       properties:
@@ -153,16 +158,6 @@ components:
           enum:
           - QUEUED
           - RUNNING
-    ReuseMultipleAccessRequest:
-      type: object
-      required:
-      - multipleAccessToken
-      properties:
-        multipleAccessToken:
-          type: string
-        since:
-          type: string
-          format: date
     CommandResult:
       type: object
       properties:
@@ -198,24 +193,29 @@ components:
           type: string
         nationalId:
           type: string
-    Transaction:
+    Account:
       type: object
       properties:
-        date:
+        number:
           type: string
-          format: date
-        amount:
-          type: number
-          format: double
         currency:
           type: string
-        description:
-          type: string
-        counterpartyName:
-          type: string
-        counterpartyAccount:
-          type: string
-        label:
+        balance:
+          type: number
+          format: double
+        availableBalance:
+          type: number
+          format: double
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    DeleteMultipleAccessRequest:
+      type: object
+      required:
+      - multipleAccessToken
+      properties:
+        multipleAccessToken:
           type: string
   securitySchemes:
     ApiKeyAuth:

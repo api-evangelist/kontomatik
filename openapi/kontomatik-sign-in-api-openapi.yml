@@ -68,16 +68,6 @@ paths:
                 $ref: '#/components/schemas/RedirectionSignInStatus'
 components:
   schemas:
-    RedirectionSignInResponse:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        sessionIdSignature:
-          type: string
-        redirectUrl:
-          type: string
-          format: uri
     RedirectionSignInStatus:
       type: object
       properties:
@@ -90,6 +80,16 @@ components:
           - COMPLETED
           - FAILED
           - EXPIRED
+    RedirectionSignInResponse:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        sessionIdSignature:
+          type: string
+        redirectUrl:
+          type: string
+          format: uri
     RedirectionSignInRequest:
       type: object
       required:
