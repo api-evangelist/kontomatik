@@ -104,60 +104,13 @@ paths:
           description: Consent revoked
 components:
   schemas:
-    ReuseMultipleAccessRequest:
+    DeleteMultipleAccessRequest:
       type: object
       required:
       - multipleAccessToken
       properties:
         multipleAccessToken:
           type: string
-        since:
-          type: string
-          format: date
-    DefaultImportRequest:
-      type: object
-      required:
-      - sessionId
-      - sessionIdSignature
-      properties:
-        sessionId:
-          type: string
-        sessionIdSignature:
-          type: string
-        since:
-          type: string
-          format: date
-        ownerExternalId:
-          type: string
-    Transaction:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        amount:
-          type: number
-          format: double
-        currency:
-          type: string
-        description:
-          type: string
-        counterpartyName:
-          type: string
-        counterpartyAccount:
-          type: string
-        label:
-          type: string
-    CommandAccepted:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - QUEUED
-          - RUNNING
     CommandResult:
       type: object
       properties:
@@ -182,17 +135,6 @@ components:
             $ref: '#/components/schemas/Account'
         multipleAccessToken:
           type: string
-    Owner:
-      type: object
-      properties:
-        externalId:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        nationalId:
-          type: string
     Account:
       type: object
       properties:
@@ -210,12 +152,70 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
-    DeleteMultipleAccessRequest:
+    ReuseMultipleAccessRequest:
       type: object
       required:
       - multipleAccessToken
       properties:
         multipleAccessToken:
+          type: string
+        since:
+          type: string
+          format: date
+    CommandAccepted:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+    Transaction:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        description:
+          type: string
+        counterpartyName:
+          type: string
+        counterpartyAccount:
+          type: string
+        label:
+          type: string
+    DefaultImportRequest:
+      type: object
+      required:
+      - sessionId
+      - sessionIdSignature
+      properties:
+        sessionId:
+          type: string
+        sessionIdSignature:
+          type: string
+        since:
+          type: string
+          format: date
+        ownerExternalId:
+          type: string
+    Owner:
+      type: object
+      properties:
+        externalId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        nationalId:
           type: string
   securitySchemes:
     ApiKeyAuth:

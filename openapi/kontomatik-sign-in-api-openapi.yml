@@ -68,18 +68,6 @@ paths:
                 $ref: '#/components/schemas/RedirectionSignInStatus'
 components:
   schemas:
-    RedirectionSignInStatus:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - COMPLETED
-          - FAILED
-          - EXPIRED
     RedirectionSignInResponse:
       type: object
       properties:
@@ -111,6 +99,18 @@ components:
         redirectUrl:
           type: string
           format: uri
+    RedirectionSignInStatus:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - COMPLETED
+          - FAILED
+          - EXPIRED
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
