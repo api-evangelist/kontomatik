@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/kontomatik/integrations
 - https://n8n.io/integrations/kontomatik/
@@ -9,8 +9,26 @@ checked:
 - https://composio.dev/toolkits/kontomatik
 - https://monid.ai/tools/kontomatik
 - https://n8n.io/integrations/kontomatik/
+- https://www.openbanking.org.uk/regulated-providers/kontomatik-uab/
 - https://zapier.com/apps/kontomatik/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: UK Open Banking
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.openbanking.org.uk/regulated-providers/kontomatik-uab/
+  contract_reference:
+    register: UK Open Banking regulated providers (OBL directory)
+    spec_file: null
+    role: Third Party Providers
+    registered_name: Kontomatik UAB
+    register_id: 6599
+    matched_domain: kontomatik.com
+    api_families: null
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
 templates: []
