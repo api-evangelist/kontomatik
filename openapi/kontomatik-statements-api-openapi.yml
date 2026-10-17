@@ -129,6 +129,17 @@ components:
         parsedAt:
           type: string
           format: date-time
+    VerificationFailure:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        failedVerifications:
+          type: array
+          items:
+            type: string
     StatementTransaction:
       type: object
       properties:
@@ -142,17 +153,6 @@ components:
           type: string
         description:
           type: string
-    VerificationFailure:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        failedVerifications:
-          type: array
-          items:
-            type: string
     StatementResult:
       type: object
       properties:
