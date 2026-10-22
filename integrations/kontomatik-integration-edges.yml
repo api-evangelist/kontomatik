@@ -11,6 +11,9 @@ checked:
 - https://n8n.io/integrations/kontomatik/
 - https://www.openbanking.org.uk/regulated-providers/kontomatik-uab/
 - https://zapier.com/apps/kontomatik/integrations
+- https://euclid.eba.europa.eu/register/api/filemetadata
+- https://euclid.eba.europa.eu/register/cir/search
+- https://euclid.eba.europa.eu/register/pir/search
 summary: null
 marketplace_apps: []
 edges:
@@ -31,4 +34,59 @@ edges:
     api_families: null
     detected_by: sweep-standard-registers.py
     detected: '2026-10-14'
+- partner_name: EBA Payment Institutions Register (PSD2 / EMD2)
+  partner: null
+  partner_match: register-name
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://euclid.eba.europa.eu/register/pir/search
+  category: EU/EEA PSD2 payment / e-money authorisation
+  contract_reference:
+    register: EBA Payment Institutions Register (PSD2 / EMD2)
+    spec_file: null
+    standard: null
+    role: authorised-payment-or-e-money-institution
+    registrations:
+    - registered_name: '"Kontomatik", UAB'
+      licences:
+      - account information service provider
+      register_country: LT
+      register_id: PSD_AIS_LT_LT_BL_304852516
+      matched_domain: null
+      matched_by: register-name
+      authorised: '2018-12-17'
+      competent_authority: LT_BL
+      national_ref: LB000487
+      home_services:
+      - PS_080
+      passports:
+      - AT
+      - BG
+      - CZ
+      - DE
+      - EE
+      - ES
+      - FR
+      - HR
+      - HU
+      - IT
+      - LV
+      - PL
+      - PT
+      - RO
+      - SI
+      - SK
+      register_name_note: register-name 'kontomatik' = kontomatik; no wikidata P856
+    matched_by: register-name
+    signal_note: 'participation only: a regulator authorisation / registration and its PSD2 passports (host countries);
+      no API conformance is published by this register'
+    detected_by: sweep-eu-psd2-payment-institutions.py
+    detected: '2026-10-21'
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-eu-psd2-payment-institutions.py
+  first_seen: '2026-10-21'
 templates: []
