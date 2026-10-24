@@ -1,113 +1,110 @@
 {
+  "info": {
+    "_postman_id": "a4526367-ef06-4345-bd69-ca68137e6243",
+    "name": "Kontomatik Data Analysis Profile API",
+    "description": "Analytical services running on top of imported AIS, PDF, or uploaded data.\nIncludes transaction labeling, vendor recognition, ML-based credit scoring,\nbehavioral profiling, owner features, data summaries, and income\nconfirmation across configurable timespans.\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:32:08.000Z",
+    "updatedAt": "2026-10-22T01:32:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a4526367-ef06-4345-bd69-ca68137e6243"
+  },
   "item": [
     {
-      "id": "e2cfb1b2-73b0-4747-9b45-46e2d398e849",
-      "name": "Profile",
-      "description": {
-        "content": "Behavioral profiling (beta)",
-        "type": "text/plain"
-      },
+      "name": "profile",
       "item": [
         {
-          "id": "0dd7c355-9731-4a6b-ac70-89cf9d66d552",
           "name": "Get Behavioral Profile",
+          "id": "887bdd62-f658-4916-9c55-15fc55fb3f68",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Get Behavioral Profile",
-            "description": {
-              "content": "Returns descriptive behavioral profile segments based on transaction patterns (beta).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "profile"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "ownerExternalId",
-                  "value": "<string>",
-                  "description": "(Required) "
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/profile?ownerExternalId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "profile"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "ownerExternalId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns descriptive behavioral profile segments based on transaction patterns (beta)."
           },
           "response": [
             {
-              "id": "50f93579-aae2-446a-80fb-2f812f0d605c",
+              "id": "01ec2ab8-2cd6-477d-a04d-11cb87e6010f",
               "name": "Profile returned",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "profile"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "ownerExternalId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/profile?ownerExternalId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "profile"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ownerExternalId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"ownerExternalId\": \"string\",\n  \"segments\": [\n    \"string\",\n    \"string\"\n  ],\n  \"descriptors\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"ownerExternalId\": \"<string>\",\n  \"segments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"descriptors\": {\n    \"eiusmod_6_\": \"<string>\",\n    \"aliquip_b42\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:32:08.000Z",
+              "updatedAt": "2026-10-22T01:32:08.000Z",
+              "uid": "35240-01ec2ab8-2cd6-477d-a04d-11cb87e6010f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:32:08.000Z",
+          "updatedAt": "2026-10-22T01:32:08.000Z",
+          "uid": "35240-887bdd62-f658-4916-9c55-15fc55fb3f68"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.kontomatik.com/v1",
-      "key": "baseUrl"
+      "id": "ec1bd181-8204-4fb2-b14f-d3ad172bc335",
+      "createdAt": "2026-10-22T01:32:08.000Z",
+      "updatedAt": "2026-10-22T01:32:08.000Z",
+      "uid": "35240-ec1bd181-8204-4fb2-b14f-d3ad172bc335"
     }
   ],
   "auth": {
@@ -115,25 +112,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "68975aa4-19fe-4e4c-b076-f7a4f5c1b153",
-    "name": "Kontomatik Account Information Service Aggregation Profile API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "PSD2-regulated Account Information Service (AIS) for connecting to end-user\nbank accounts across Central and Eastern Europe. Supports Single Access\n(one-time data fetch) and Multiple Access (reusable consent token, up to\n180 days), redirection-based SignIn Flow, and mock-bank testing.\n\n\nContact Support:\n Name: Kontomatik Support\n Email: support@kontomatik.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.kontomatik.com/v1"
     }
-  }
+  ]
 }
