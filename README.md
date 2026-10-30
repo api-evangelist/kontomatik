@@ -1,4 +1,4 @@
-# Kontomatik (kontomatik)
+# Kontomatik
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,150 +66,195 @@
 
 Kontomatik is a Warsaw- and Vilnius-based PSD2-licensed open banking provider delivering bank data aggregation, KYC, credit scoring, income verification, transaction labeling, and PDF statement parsing across Central and Eastern Europe (Poland, Czech Republic, Romania, Lithuania, Latvia, Estonia) and Iberia (Spain, Portugal). The platform combines an Account Information Service (AIS) with Single, Multiple, and Mixed access modes, Polish-bank PDF parsing in standard and trusted modes, and an analytical stack (labeling, vendor recognition, scoring, profiling, data summary, income confirmation) plus the Kontomatik Report. Operations are managed through the Insight client portal with API-key issuance, IP whitelisting, role-based access, and 2FA.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/kontomatik/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/kontomatik/refs/heads/main/apis.yml)
+**Areas:** Open Banking · PSD2 · AIS · Bank Data Aggregation · CEE · KYC · Credit Scoring · Transaction Labeling · PDF Parsing
 
-## Scope
+## Kontomatik on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Kontomatik is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kontomatik/](https://apis.io/providers/kontomatik/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (16)
 
-- Open Banking
-- PSD2
-- AIS
-- Bank Data Aggregation
-- CEE
-- KYC
-- Credit Scoring
-- Transaction Labeling
-- PDF Parsing
+- [Kontomatik Aggregation API](https://apis.io/apis/kontomatik/kontomatik-aggregation-api/) — Cross-source aggregation
+- [Kontomatik Catalog API](https://apis.io/apis/kontomatik/kontomatik-catalog-api/) — Bank coverage catalog
+- [Kontomatik Command API](https://apis.io/apis/kontomatik/kontomatik-command-api/) — Background import commands and consent management
+- [Kontomatik Confirmations API](https://apis.io/apis/kontomatik/kontomatik-confirmations-api/) — Transaction confirmation PDF parsing
+- [Kontomatik Features API](https://apis.io/apis/kontomatik/kontomatik-features-api/) — Owner-level financial metrics
+- [Kontomatik Income API](https://apis.io/apis/kontomatik/kontomatik-income-api/) — Income confirmation
+- [Kontomatik Labeling API](https://apis.io/apis/kontomatik/kontomatik-labeling-api/) — Transaction categorization
+- [Kontomatik Mock API](https://apis.io/apis/kontomatik/kontomatik-mock-api/) — Test session generation against KontoBank
+- [Kontomatik Owner API](https://apis.io/apis/kontomatik/kontomatik-owner-api/) — Owner data lifecycle
+- [Kontomatik Profile API](https://apis.io/apis/kontomatik/kontomatik-profile-api/) — Behavioral profiling (beta)
+- [Kontomatik Reports API](https://apis.io/apis/kontomatik/kontomatik-reports-api/) — Report token lifecycle
+- [Kontomatik Score API](https://apis.io/apis/kontomatik/kontomatik-score-api/) — ML credit scoring
+- [Kontomatik Statements API](https://apis.io/apis/kontomatik/kontomatik-statements-api/) — Bank statement PDF parsing
+- [Kontomatik Summary API](https://apis.io/apis/kontomatik/kontomatik-summary-api/) — Aggregated financial summaries
+- [Kontomatik Vendors API](https://apis.io/apis/kontomatik/kontomatik-vendors-api/) — Vendor / counterparty recognition (beta)
+- [Kontomatik Sign In API](https://apis.io/apis/kontomatik/kontomatik-sign-in-api/) — Redirection-based bank authentication flow
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25T00:00:00.000Z
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Kontomatik Account Information Service API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-PSD2-regulated Account Information Service for connecting end-user bank accounts across Poland, Czech Republic, Spain, Portugal, Romania, Lithuania, Latvia, and Estonia. Supports Single Access (one-time fetch), Multiple Access (up to 180-day consent tokens), and Mixed Access. Includes redirection SignIn Flow, background import commands, consent revocation, and a KontoBank mock-bank sandbox.
+- [Kontomatik Agentic Access](https://apis.io/agentic-access/kontomatik/kontomatik-agentic-access/)
 
-- **Human URL:** [https://developer.kontomatik.com/docs/](https://developer.kontomatik.com/docs/)
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- Open Banking
-- PSD2
-- AIS
-- Bank Data
+- [KontomatikAccount](https://apis.io/schemas/kontomatik/kontomatik-account/)
+- [KontomatikOwner](https://apis.io/schemas/kontomatik/kontomatik-owner/)
+- [KontomatikTransaction](https://apis.io/schemas/kontomatik/kontomatik-transaction/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://developer.kontomatik.com/first-steps/api-overview/)
-- [Documentation](https://developer.kontomatik.com/docs/)
-- [OpenAPI](openapi/kontomatik-ais-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/kontomatik-ais-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/kontomatik-ais-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/kontomatik-owner-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/kontomatik-account-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/kontomatik-transaction-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/kontomatik-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Data models expressed in JSON Structure.
 
-### Kontomatik PDF Parsing API
+- [Kontomatik Owner Graph Structure](https://apis.io/json-structure/kontomatik/kontomatik-owner-graph-structure/)
 
-Extract structured owner, account, and transaction data from Polish bank statement and transaction confirmation PDFs. Offers standard mode (rejects on verification failures) and trusted mode (returns data even when verification fails), plus a per-owner history endpoint and the PDF coverage catalog.
+#### JSON-LD (1)
 
-- **Human URL:** [https://developer.kontomatik.com/docs/](https://developer.kontomatik.com/docs/)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Kontomatik Context](https://apis.io/jsonld/kontomatik/kontomatik-context/)
 
-- PDF Parsing
-- Document AI
-- Bank Statements
-- Poland
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://developer.kontomatik.com/docs/)
-- [OpenAPI](openapi/kontomatik-pdf-parsing-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/kontomatik-pdf-parsing-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/kontomatik-pdf-parsing-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/kontomatik-pdf-statement-example.json)
+- [Kontomatik Vocabulary](https://apis.io/vocabularies/kontomatik/kontomatik-vocabulary/)
 
-### Kontomatik Data Analysis API
+#### Examples (3)
 
-ML-powered analytical services on top of imported bank data — transaction labeling, vendor recognition (beta), credit scoring with repayment probability, behavioral profiling (beta), owner features, data summaries by category, income confirmation across four configurable timespans, external-data labeling for non-bank transactions, cross-source aggregation, and owner data deletion.
+Example requests and responses.
 
-- **Human URL:** [https://developer.kontomatik.com/docs/](https://developer.kontomatik.com/docs/)
+- [Kontomatik Default Import Example](https://apis.io/examples/kontomatik/kontomatik-default-import-example/)
+- [Kontomatik Pdf Statement Example](https://apis.io/examples/kontomatik/kontomatik-pdf-statement-example/)
+- [Kontomatik Score Example](https://apis.io/examples/kontomatik/kontomatik-score-example/)
 
-#### Tags
+#### Collections (20)
 
-- Transaction Labeling
-- Credit Scoring
-- Income Verification
-- Profiling
-- Machine Learning
+Postman and Open Collection request collections.
 
-#### Properties
+- [Kontomatik Account Information Service Aggregation API](https://apis.io/collections/kontomatik/open-kontomatik-aggregation-api/)
+- [Kontomatik Account Information Service API](https://apis.io/collections/kontomatik/open-kontomatik-ais-api/)
+- [Kontomatik Account Information Service Aggregation Catalog API](https://apis.io/collections/kontomatik/open-kontomatik-catalog-api/)
+- [Kontomatik Account Information Service Aggregation Command API](https://apis.io/collections/kontomatik/open-kontomatik-command-api/)
+- [Kontomatik Account Information Service Aggregation Confirmations API](https://apis.io/collections/kontomatik/open-kontomatik-confirmations-api/)
+- [Kontomatik Data Analysis API](https://apis.io/collections/kontomatik/open-kontomatik-data-analysis-api/)
+- [Kontomatik Account Information Service Aggregation Features API](https://apis.io/collections/kontomatik/open-kontomatik-features-api/)
+- [Kontomatik Account Information Service Aggregation Income API](https://apis.io/collections/kontomatik/open-kontomatik-income-api/)
+- [Kontomatik Account Information Service Aggregation Labeling API](https://apis.io/collections/kontomatik/open-kontomatik-labeling-api/)
+- [Kontomatik Account Information Service Aggregation Mock API](https://apis.io/collections/kontomatik/open-kontomatik-mock-api/)
+- [Kontomatik Account Information Service Aggregation Owner API](https://apis.io/collections/kontomatik/open-kontomatik-owner-api/)
+- [Kontomatik PDF Parsing API](https://apis.io/collections/kontomatik/open-kontomatik-pdf-parsing-api/)
+- [Kontomatik Account Information Service Aggregation Profile API](https://apis.io/collections/kontomatik/open-kontomatik-profile-api/)
+- [Kontomatik Report API](https://apis.io/collections/kontomatik/open-kontomatik-report-api/)
+- [Kontomatik Account Information Service Aggregation Reports API](https://apis.io/collections/kontomatik/open-kontomatik-reports-api/)
+- [Kontomatik Account Information Service Aggregation Score API](https://apis.io/collections/kontomatik/open-kontomatik-score-api/)
+- [Kontomatik Account Information Service Aggregation SignIn API](https://apis.io/collections/kontomatik/open-kontomatik-signin-api/)
+- [Kontomatik Account Information Service Aggregation Statements API](https://apis.io/collections/kontomatik/open-kontomatik-statements-api/)
+- [Kontomatik Account Information Service Aggregation Summary API](https://apis.io/collections/kontomatik/open-kontomatik-summary-api/)
+- [Kontomatik Account Information Service Aggregation Vendors API](https://apis.io/collections/kontomatik/open-kontomatik-vendors-api/)
 
-- [Documentation](https://developer.kontomatik.com/docs/)
-- [OpenAPI](openapi/kontomatik-data-analysis-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/kontomatik-data-analysis-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/kontomatik-data-analysis-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/kontomatik-score-example.json)
-- [JSON Structure](json-structure/kontomatik-owner-graph-structure.json)
+#### Governance rules (2)
 
-### Kontomatik Report API
+Spectral rulesets for the provider's contracts.
 
-Create, list, and retrieve shareable Kontomatik Report tokens that bundle imported AIS and PDF data together with the analytical outputs into authenticated, time-bound deliverables (beta).
+- [Kontomatik — jsonschema rules](https://apis.io/rules/kontomatik/kontomatik-jsonschema-spectral-rules/)
+- [Kontomatik API Rules](https://apis.io/rules/kontomatik/kontomatik-rules/)
 
-- **Human URL:** [https://developer.kontomatik.com/docs/](https://developer.kontomatik.com/docs/)
+#### Security (3)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Reporting
-- Beta
-- Bank Data
+- [Kontomatik Authentication](https://apis.io/security/kontomatik/kontomatik-authentication/)
+- [Kontomatik Domain Security](https://apis.io/security/kontomatik/kontomatik-domain-security/)
+- [Kontomatik Trust Center](https://apis.io/security/kontomatik/kontomatik-trust-center/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://developer.kontomatik.com/docs/)
-- [OpenAPI](openapi/kontomatik-report-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/kontomatik-report-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/kontomatik-report-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-## Common Properties
+- [Kontomatik Plans Pricing](https://apis.io/plans/kontomatik/kontomatik-plans-pricing/)
 
-- [Portal](https://kontomatik.com)
+#### Rate limits (1)
+
+Published request limits.
+
+- [Kontomatik Rate Limits](https://apis.io/rate-limits/kontomatik/kontomatik-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Kontomatik Finops](https://apis.io/finops/kontomatik/kontomatik-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.kontomatik.com/)
 - [Documentation](https://developer.kontomatik.com/)
-- [Documentation](https://developer.kontomatik.com/docs/)
-- [Getting Started](https://developer.kontomatik.com/first-steps/)
-- [Documentation](https://developer.kontomatik.com/first-steps/api-overview/)
-- [Documentation](https://developer.kontomatik.com/first-steps/getting-api-access/)
-- [Documentation](https://developer.kontomatik.com/first-steps/insight/)
-- [Documentation](https://developer.kontomatik.com/user-guides/)
+- [Getting started](https://developer.kontomatik.com/first-steps/)
 - [Support](https://developer.kontomatik.com/faq/)
-- [Sign Up](https://insight.kontomatik.com/)
-- [Support](https://kontomatik.com/contact)
-- [Sign Up](https://calendly.com/dominik-wolski-kontomatik/demo-call)
-- [LinkedIn](https://www.linkedin.com/company/kontomatik)
-- [GitHub Organization](https://github.com/kontomatik)
 - [Blog](https://kontomatik.com/blog)
-- [Plans](plans/kontomatik-plans-pricing.yml)
-- [Rate Limits](rate-limits/kontomatik-rate-limits.yml)
-- [Fin Ops](finops/kontomatik-finops.yml)
-- [Vocabulary](vocabulary/kontomatik-vocabulary.yml)
-- [Spectral Rules](rules/kontomatik-rules.yml)
-- [Coverage](undefined)
-- [Features](undefined)
-- [Office](undefined)
-- [Email](undefined)
-- [Compliance](undefined)
+- [GitHub](https://github.com/kontomatik)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 45.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 62.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 51.2 |
+| Access clarity | 34.2 |
+
+**Agent readiness 20.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 17.3** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kontomatik/](https://apis.io/providers/kontomatik/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kontomatik: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kontomatik/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
